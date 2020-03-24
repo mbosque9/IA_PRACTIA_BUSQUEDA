@@ -4,7 +4,7 @@ public class ServidorsBoard {
 
     private ArrayList< ArrayList<Integer>> Board;
     public ServidorsBoard(){
-            //crear estat inicial
+            //CREAR ESTAT INICIAL
     }
 
     public void intercanviar_fitxers( Integer id1, Integer id2){
