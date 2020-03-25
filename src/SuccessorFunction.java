@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-
-
+import java.util.List;
+import java.util.Random;
 
 
 public class SuccessorFunction {
@@ -26,7 +26,7 @@ public class SuccessorFunction {
                         successors.add(emodificat);
                     }
                     else if (ServidorsBoard.intercanviar_comprovat(f, s2, f2, s) && op == 1) {        //intercanviar
-                        emodificat = intercanviar_fitxers(f, s2, f2, s);
+                        emodificat = ServidorsBoard.intercanviar_fitxers(f, s2, f2, s);
                         successors.add(emodificat);
                     }
                 }
@@ -46,15 +46,15 @@ public class SuccessorFunction {
             int f = genera_aleatori(nfitxers);    //trio un fitxer random del servidor que m'ha sortit
             int s2 = genera_aleatori(nservidors);
 
-            if (moure_comprovat(f, s2) && op == 0) {
-                    eactual = moure_fitxer(f, s2);
+            if (ServidorsBoard.moure_comprovat(f, s2) && op == 0) {
+                    eactual = ServidorsBoard.moure_fitxer(f, s2);
                     successors.add(eactual);
                     generat = true;
             }
             else if (op == 1) {
                 int f2 = genera_aleatori(eactual.get(s2).size());
-                if (intercanviar_comprovat(f, s2, f2, s)) {
-                    eactual = intercanviar_fitxers(f, s2, f2, s);
+                if (ServidorsBoard.intercanviar_comprovat(f, s2, f2, s)) {
+                    eactual = ServidorsBoard.intercanviar_fitxers(f, s2, f2, s);
                     successors.add(eactual);
                     generat = true;
                 }

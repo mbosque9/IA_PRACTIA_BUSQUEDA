@@ -7,7 +7,7 @@ public class ServidorsBoard {
             //estat inicial
     }
 
-    public void intercanviar_fitxers( Integer id1, Integer id2){
+    public static void intercanviar_fitxers(Integer id1, Integer s2, Integer id2, Integer s){
 
     }
 
