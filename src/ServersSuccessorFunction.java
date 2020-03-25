@@ -7,59 +7,53 @@ import aima.search.framework.SuccessorFunction;
 
 public class ServersSuccessorFunction {
 
-    private List successors;  //ArrayList<Board>
+    private ArrayList successors = new ArrayList();
+
 
     public static int genera_aleatori(int limit) {
         //Genera un nombre aleatori entre 0 i limit-1
         return new Random().nextInt(limit);
     }
 
-    public List genera_successors(Board eactual) {
-        Board emodificat = eactual;
-        int nservidors = eactual.size();
-        int nfitxers;
+    public ArrayList genera_successors(Object eactual) {
+        ServersBoard board = (ServersBoard) eactual;
+        ServersBoard emodificat;
+        int sa, s;
+        int npeticions = board.size();
+        ArrayList<Integer> ssp;
 
-        for (int s = 0; s < nservidors; s++) {
-            nfitxers = eactual.get(s).size();
-            for (int f = 0; f < nfitxers; f++) {
-                for (int s2 = 0; s2 != s && s2 < nservidors; s2++) {
-                    if (ServersBoard.moure_comprovat(f, s2)) {        //moure
-                        emodificat = ServersBoard.moure_fitxer(f, s2);
-                        successors.add(emodificat);
-                    }
-                    else if (ServersBoard.intercanviar_comprovat(f, s2, f2, s) && op == 1) {        //intercanviar
-                        emodificat = ServersBoard.intercanviar_fitxers(f, s2, f2, s);
-                        successors.add(emodificat);
-                    }
+        for (int i = 0; i < npeticions; i++) {
+            sa = board.get(i);
+            ssp = comprova_servidors(sa);
+            for (int j = 0; j < ssp.size(); j++) {      //recorro cada servidor que te el fitxer
+                s = ssp.get(j);
+                if (sa != s) {      //comprovo que no siguin el mateix servidor
+                    emodificat = moure_servidor(i,s);       //A la posició i vull posar el nou servidor s
+                    successors.add(new Successor(emodificat));      //com transpes pero espera 2 params
                 }
             }
+            return successors;
         }
-        return successors;
     }
 
-    public List genera_successors_aleatori(Board eactual) {
+    public ArrayList genera_successors_aleatori(Object eactual) {
+        ServersBoard board = (ServersBoard) eactual;
+        ServersBoard emodificat;
         boolean generat = false;
-        int nservidors = eactual.size();
-        int nfitxers = eactual.get(s).size();
+        int sa, s, a1, a2;
+        int npeticions = board.size();
+        ArrayList<Integer> ssp;
 
-        while (not generat) {
-            int op = genera_aleatori(2);    //0 mou, 1 intercanvia
-            int s = genera_aleatori(nservidors);
-            int f = genera_aleatori(nfitxers);    //trio un fitxer random del servidor que m'ha sortit
-            int s2 = genera_aleatori(nservidors);
-
-            if (ServersBoard.moure_comprovat(f, s2) && op == 0) {
-                    eactual = ServersBoard.moure_fitxer(f, s2);
-                    successors.add(eactual);
-                    generat = true;
-            }
-            else if (op == 1) {
-                int f2 = genera_aleatori(eactual.get(s2).size());
-                if (ServersBoard.intercanviar_comprovat(f, s2, f2, s)) {
-                    eactual = ServersBoard.intercanviar_fitxers(f, s2, f2, s);
-                    successors.add(eactual);
-                    generat = true;
-                }
+        while (!generat) {
+            a1 = genera_aleatori(npeticions);        //indicara una peticio
+            sa = board.get(a1);                      //servidor associat a la peticio
+            ssp = comprova_servidors(sa);    //nomes em poden tocar servidors que tinguin el fitxer
+            a2 = genera_aleatori(ssp.size());
+            s = ssp.get(a2);
+            if (sa != s) {      //comprovo que no siguin el mateix servidor
+                emodificat = moure_servidor(a1,s);
+                successors.add(new Successor(emodificat));      //com transpes pero espera 2 params
+                generat = true;
             }
         }
         return successors;
