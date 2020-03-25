@@ -27,7 +27,7 @@ public class ServersDemo {
     private static void ServidorsHillClimbingSearch(ServidorsBoard serv) {
         try {
             Problem problem =  new Problem(Serv,new ServidorSuccessorFunction(), new ServidorGoalTest());
-            Search search =  new BreadthFirstSearch(new TreeSearch());
+            Search search =  new HillClimbingSearch();
             SearchAgent agent = new SearchAgent(problem,search);
 
             System.out.println();
