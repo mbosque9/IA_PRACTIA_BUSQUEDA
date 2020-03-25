@@ -18,7 +18,7 @@ public class ServidorsBoard {
     public static boolean moure_comprovat(Integer fitxer, Integer servidor){
 
     }
-QUETECALLLESYAMIREIA
+
     public static boolean intercanviar_comprovat(Integer fitxer, Integer servidor){
 
     }
