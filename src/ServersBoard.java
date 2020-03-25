@@ -10,10 +10,9 @@ public class ServersBoard {
 
     private ArrayList<Integer> Board;
 
-    public ServidorsBoard(Requests req, Servers ser){
-            requests = req,
-            servers = ser;
-
+    public ServersBoard(Requests req, Servers serv) {
+        requests = req;
+        servers = serv;
     }
 
     public static void intercanviar_fitxers(Integer id1, Integer s2, Integer id2, Integer s){
