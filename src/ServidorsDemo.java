@@ -1,6 +1,8 @@
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
+import java.lang.Object;
+import IA.DistFS.Servers;
 
 
 public class ServidorsDemo {
