@@ -3,7 +3,7 @@ import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
 
 
-public class ServidorsDemo {
+public class ServersDemo {
     public static void main(String[] args) {
         int usuaris, max_peticions, seedr, servidors, min_replic, seeds
         Requests requests =  new Requests(usuaris, max_peticions, seedr);
