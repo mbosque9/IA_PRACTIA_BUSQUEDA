@@ -5,7 +5,7 @@ import java.util.Random;
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
 
-public class SuccessorFunction {
+public class ServidorSuccessorFunction {
 
     private List successors;  //ArrayList<Board>
 
