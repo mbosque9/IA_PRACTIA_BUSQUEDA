@@ -12,7 +12,7 @@ public class ServidorsBoard {
     }
 
     public static void moure_fitxer(Integer idFitxer, Integer idServidor){
-
+//heeeeeey
     }
 
     public static boolean moure_comprovat(Integer fitxer, Integer servidor){
