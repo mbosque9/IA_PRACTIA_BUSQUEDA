@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class SuccessorFunction {
 
-    private List successors;
+    private List successors;  //ArrayList<Board>
 
     public static int genera_aleatori(int limit) {
         //Genera un nombre aleatori entre 0 i limit-1
