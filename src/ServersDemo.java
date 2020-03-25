@@ -5,7 +5,7 @@ import java.lang.Object;
 import IA.DistFS.Servers;
 
 
-public class ServidorsDemo {
+public class ServersDemo {
     public static void main(String[] args) {
         int usuaris, max_peticions, seedr, servidors, min_replic, seeds
         Requests requests =  new Requests(usuaris, max_peticions, seedr);
