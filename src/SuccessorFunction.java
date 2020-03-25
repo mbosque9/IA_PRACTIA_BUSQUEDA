@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 
 
+
+
 public class SuccessorFunction {
 
     private List successors;
@@ -19,11 +21,11 @@ public class SuccessorFunction {
             nfitxers = eactual.get(s).size();
             for (int f = 0; f < nfitxers; f++) {
                 for (int s2 = 0; s2 != s && s2 < nservidors; s2++) {
-                    if (moure_comprovat(f, s2)) {        //moure
-                        emodificat = moure_fitxer(f, s2);
+                    if (ServidorsBoard.moure_comprovat(f, s2)) {        //moure
+                        emodificat = ServidorsBoard.moure_fitxer(f, s2);
                         successors.add(emodificat);
                     }
-                    else if (intercanviar_comprovat(f, s2, f2, s) && op == 1) {        //intercanviar
+                    else if (ServidorsBoard.intercanviar_comprovat(f, s2, f2, s) && op == 1) {        //intercanviar
                         emodificat = intercanviar_fitxers(f, s2, f2, s);
                         successors.add(emodificat);
                     }

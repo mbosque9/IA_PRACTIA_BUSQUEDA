@@ -11,7 +11,15 @@ public class ServidorsBoard {
 
     }
 
-    public void moure_fitxer(Integer idFitxer, Integer idServidor){
+    public static void moure_fitxer(Integer idFitxer, Integer idServidor){
+
+    }
+
+    public static boolean moure_comprovat(Integer fitxer, Integer servidor){
+
+    }
+
+    public static boolean intercanviar_comprovat(Integer fitxer, Integer servidor){
 
     }
 }
