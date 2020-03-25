@@ -1,3 +1,8 @@
+import aima.search.framework.Problem;
+import aima.search.framework.Search;
+import aima.search.framework.SearchAgent;
+
+
 public class ServidorsDemo {
     public static void main(String[] args) {
         int usuaris, max_peticions, seedr, servidors, min_replic, seeds
@@ -18,6 +23,16 @@ public class ServidorsDemo {
     }
 
     private static void ServidorsHillClimbingSearch(ServidorsBoard serv) {
+        try {
+            Problem problem =  new Problem(Serv,new ServidorSuccessorFunction(), new ProbIA15GoalTest());
+            Search search =  new BreadthFirstSearch(new TreeSearch());
+            SearchAgent agent = new SearchAgent(problem,search);
 
+            System.out.println();
+            printActions(agent.getActions());
+            printInstrumentation(agent.getInstrumentation());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
