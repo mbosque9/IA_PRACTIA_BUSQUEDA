@@ -8,7 +8,7 @@ public class ServidorsBoard {
     }
 
     public static void intercanviar_fitxers(Integer id1, Integer s2, Integer id2, Integer s){
-
+        //HOLA
     }
 
     public static void moure_fitxer(Integer idFitxer, Integer idServidor){
