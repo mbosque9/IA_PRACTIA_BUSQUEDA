@@ -50,28 +50,28 @@ public class ServersBoard {
         }
     }
 
-    public static ArrayList<Integer> comprova_servidors(Integer p){
+    public static ArrayList<Integer> comprova_servidors(Integer p){   //falta implementar
         ArrayList<Integer> posibles_servidors = null;
         return posibles_servidors;
     }
 
-    public static void moure_servidor(int i, int s) {
+    public static void moure_servidor(int i, int s) {  //fet
         Board.set(i,s);
     }
 
-    public Requests getRequests() {
+    public Requests getRequests() {     //fet
         return requests;
     }
 
-    public Servers getServers(){
+    public Servers getServers(){        //fet
         return servers;
     }
 
-    public int getSize(){
+    public int getSize(){           //fet
         return Board.size();
     }
 
-    public int getServidor(int i) {
+    public int getServidor(int i) {     //fet
         //donat la peticio numero i vull saber el fixter associat
         int[] peticio = requests.getRequest(i);
         return peticio[1];
