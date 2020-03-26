@@ -28,9 +28,8 @@ public class ServersSuccessorFunction {
             for (int j = 0; j < ssp.size(); j++) {      //recorro cada servidor que te el fitxer
                 s = ssp.get(j);
                 if (sa != s) {      //comprovo que no siguin el mateix servidor
-                    //aixo no pot retornar un estat, sha d'aplicar sobre a modificat la funcio moure servidor
-                    // emodificat.moure_servidor(i,s);
-                    emodificat = moure_servidor(i,s);       //A la posició i vull posar el nou servidor s
+                    emodificat = board;
+                    emodificat.moure_servidor(i,s);       //A la posició i vull posar el nou servidor s
                     successors.add(new Successor(emodificat));      //com transpes pero espera 2 params CERC QUE SHA DE FICAR UN STRING DE QUIN MOVIMENT HAS FET
                 }
             }
@@ -53,7 +52,8 @@ public class ServersSuccessorFunction {
             a2 = genera_aleatori(ssp.size());
             s = ssp.get(a2);
             if (sa != s) {      //comprovo que no siguin el mateix servidor
-                emodificat = moure_servidor(a1,s);
+                emodificat = board;
+                emodificat.moure_servidor(a1,s);
                 successors.add(new Successor(emodificat));      //com transpes pero espera 2 params
                 generat = true;
             }
