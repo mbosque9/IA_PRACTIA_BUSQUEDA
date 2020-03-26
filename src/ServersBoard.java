@@ -1,9 +1,9 @@
 import IA.DistFS.Requests;
 import IA.DistFS.Servers;
-import aima.search.framework.Metrics;
-import javafx.util.Pair;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
 
 public class ServersBoard {
 
@@ -23,21 +23,30 @@ public class ServersBoard {
     public ServersBoard(Requests req, Servers serv) {
         requests = req;
         servers = serv;
-        int[] prov, prov2;
-        Pair<Integer, Integer> temp;
+        int[] prov;
+        Set<Integer> prov2;
+        Integer tempo, tempo2, max = 0, min_ser = -1;
+        ArrayList<Integer> p, q;
+        Iterator itr;
         for(int i = 0; i < requests.size(); ++i) {
             prov = requests.getRequest(i);
             prov2 = servers.fileLocations(prov[1]);
-            for (int j = 0; prov2.size(); ++j){
-                temp._1() = prov2[j];
-                temp._2() = servers.transmissionTime(prov2[j], prov[0]);
-                if (eda.get(i).size() == 0) eda[i].add(temp);
-                else {
-                    for(int k = 0; k < eda.get(i).size(); ++k){
-                        if(eda.get(i).get(k) )
-                    }
+            p = null;
+            q = null;
+            itr = prov2.iterator();
+            while (itr.hasNext()){
+                tempo = (Integer) itr.next();
+                tempo2 =  servers.tranmissionTime(tempo, prov[0]);
+                p.add(tempo);
+                q.add(tempo2);
+                if (tempo2 > max) {
+                    max = tempo2;
+                    min_ser = tempo;
                 }
             }
+            temps.add(p);
+            serxfitxer.add(q);
+            Board.add(min_ser);
         }
     }
 
