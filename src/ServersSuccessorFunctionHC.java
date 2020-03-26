@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
 
-public class ServersSuccessorFunctionHC {
+public class ServersSuccessorFunctionHC implements SuccessorFunction {
 
     private ArrayList successors = new ArrayList();
 
