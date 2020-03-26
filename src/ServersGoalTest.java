@@ -1,6 +1,6 @@
 import aima.search.framework.GoalTest;
 
-public class ServersGoalTest {
+public class ServersGoalTest implements GoalTest {
     public boolean isGoalState(Object aState) {
         return false;
     }

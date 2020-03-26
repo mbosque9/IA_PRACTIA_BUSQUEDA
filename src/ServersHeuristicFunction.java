@@ -1,6 +1,12 @@
-public class ServersHeuristicFunction {
-    public double getHeuristicValue(Object n) {
-        //perque no doni error, retorna la h
-        return 2.0;
+import aima.search.framework.HeuristicFunction;
+
+public class ServersHeuristicFunction implements HeuristicFunction  {
+
+
+    public double getHeuristicValue(Object state) {
+        ServersBoard board=(ServersBoard)state;
+        int sum=0,nc;
+        return (sum);
     }
+
 }
