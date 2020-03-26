@@ -79,8 +79,16 @@ public class ServersBoard {
     }
 
     public int getServidor(int i) {     //fet
-        //donat la peticio numero i vull saber el fixter associat
+        //donat la peticio numero i vull saber el fitxer associat
         int[] peticio = requests.getRequest(i);
         return peticio[1];
+    }
+
+    public int[] getRequest(int i) {
+        return requests.getRequest(i);
+    }
+
+    public int getTransmissionTime(int s, int uID) {
+        return servers.tranmissionTime(s,uID);
     }
 }
