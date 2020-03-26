@@ -29,7 +29,8 @@ public class ServersSuccessorFunction {
                 if (sa != s) {      //comprovo que no siguin el mateix servidor
                     ServersBoard emodificat = new ServersBoard(board.getRequests(), board.getServers());;
                     emodificat.moure_servidor(i,s);       //a la posició i vull posar el nou servidor s
-                    successors.add(new Successor(emodificat));      //com transpes pero espera 2 params CERC QUE SHA DE FICAR UN STRING DE QUIN MOVIMENT HAS FET
+                    String S = ServersBoard.MOURE + " el servidor " + s + " a la petició" + i;
+                    successors.add(new Successor(S,emodificat));
                 }
             }
             return successors;
@@ -52,7 +53,8 @@ public class ServersSuccessorFunction {
             if (sa != s) {      //comprovo que no siguin el mateix servidor
                 ServersBoard emodificat = new ServersBoard(board.getRequests(), board.getServers());
                 emodificat.moure_servidor(a1,s);
-                successors.add(new Successor(emodificat));      //com transpes pero espera 2 params
+                String S = ServersBoard.MOURE + " el servidor " + s + " a la petició" + a1;
+                successors.add(new Successor(S,emodificat));
                 generat = true;
             }
         }
