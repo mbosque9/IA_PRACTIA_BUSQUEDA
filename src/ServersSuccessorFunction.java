@@ -17,6 +17,7 @@ public class ServersSuccessorFunction {
 
     public ArrayList genera_successors(Object eactual) {
         ServersBoard board = (ServersBoard) eactual;
+        //sha de fer que emodificat sigui un new ServersBoard(board.getRequest, board.getServsers)
         ServersBoard emodificat;
         int sa, s;
         int npeticions = board.getSize();
