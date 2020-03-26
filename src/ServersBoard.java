@@ -13,13 +13,11 @@ public class ServersBoard {
     private ArrayList< ArrayList<Integer> > temps;
     private ArrayList< ArrayList<Integer> > serxfitxer;
 
+
     private static ArrayList<Integer> Board;
 
     public static String MOURE = "Moure";
 
-    public ServersBoard(){
-
-    }
     public ServersBoard(Requests req, Servers serv) {
         requests = req;
         servers = serv;
@@ -52,6 +50,9 @@ public class ServersBoard {
 
     public static ArrayList<Integer> comprova_servidors(Integer p){   //falta implementar
         ArrayList<Integer> posibles_servidors = null;
+        //int[] peticio = requests.getRequest(i);
+        //return peticio[1];
+        //file locations(if_fitxer) = vectors de id de servidors on esta
         return posibles_servidors;
     }
 
