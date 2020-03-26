@@ -8,7 +8,7 @@ public class ServersSuccessorFunctionHC {
     private ArrayList successors = new ArrayList();
 
 
-    public ArrayList genera_successors(Object eactual) {
+    public ArrayList getSuccessors(Object eactual) {
         ServersBoard board = (ServersBoard) eactual;
         int sa, s;
         int npeticions = board.getSize();
