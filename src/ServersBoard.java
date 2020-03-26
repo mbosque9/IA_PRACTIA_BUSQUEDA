@@ -13,6 +13,8 @@ public class ServersBoard {
 
     private static ArrayList<Integer> Board;
 
+    public static String MOURE = "Moure";
+
     public ServersBoard(){
 
     }
