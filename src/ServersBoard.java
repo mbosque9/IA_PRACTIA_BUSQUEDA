@@ -1,20 +1,25 @@
+import aima.search.framework.Metrics;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
 
 public class ServersBoard {
 
+
     private Requests requests;
     private Servers servers;
     private ArrayList< ArrayList<Integer> > temps;
     private ArrayList< ArrayList<Integer> > serxfitxer;
 
-    private ArrayList<Integer> Board;
+    private static ArrayList<Integer> Board;
 
+    public ServersBoard(){
+
+    }
     public ServersBoard(Requests req, Servers serv) {
         requests = req;
         servers = serv;
-        Vector<int> prov, prov2;
+        Vector<Integer> prov, prov2;
         Pair<Integer, Integer> temp;
         for(int i = 0; i < requests.size(); ++i) {
             prov = requests.getRequest(i);
@@ -32,19 +37,28 @@ public class ServersBoard {
         }
     }
 
-    public static void intercanviar_fitxers(Integer id1, Integer s2, Integer id2, Integer s){
-        //HOLA
+    public static ArrayList<Integer> comprova_servidors(Integer p){
+        ArrayList<Integer> posibles_servidors = null;
+        return posibles_servidors;
     }
 
-    public static void moure_fitxer(Integer idFitxer, Integer idServidor){
-//heeeeeey
+    public static void moure_servidor(int i, int s) {
+        Board.set(i,s);
     }
 
-    public static boolean moure_comprovat(Integer fitxer, Integer servidor){
-
+    public Requests getRequests() {
+        return requests;
     }
 
-    public static boolean intercanviar_comprovat(Integer fitxer, Integer servidor){
+    public Servers getServers(){
+        return servers;
+    }
 
+    public int getSize(){
+        return Board.size();
+    }
+
+    public int getServidor(int i) {
+        //donat la peticio numero i vull saber el fixter associat
     }
 }

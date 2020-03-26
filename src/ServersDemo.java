@@ -5,25 +5,27 @@ import java.util.Properties;
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
+import aima.search.informed.HillClimbingSearch;
+import aima.search.informed.SimulatedAnnealingSearch;
 import java.lang.Object;
 import IA.DistFS.Servers;
 
 
 public class ServersDemo {
     public static void main(String[] args) {
-        int usuaris, max_peticions, seedr, servidors, min_replic, seeds
+        int usuaris, max_peticions, seedr, servidors, min_replic, seeds;
         Requests requests =  new Requests(usuaris, max_peticions, seedr);
         Servers servers = new Servers(servidors, min_replic, seeds);
 
         // write your code here
         ServersBoard Serv =new ServersBoard(requests, servers);
-        //algoritmes que utilitzem
         ServersHillClimbingSearch(Serv);
         ServersSimulatedAnnealingSearch(Serv);
     }
 
     private static void ServersSimulatedAnnealingSearch(ServersBoard Serv) {
         try {
+            System.out.println("\nTSP HillClimbing  -->");
             Problem problem =  new Problem(Serv, new ServersSuccessorFunction(), new ServersGoalTest(), new ServersHeuristicFunction());
             Search search =  new SimulatedAnnealingSearch();
             SearchAgent agent = new SearchAgent(problem,search);
@@ -37,6 +39,7 @@ public class ServersDemo {
     }
 
     private static void ServersHillClimbingSearch(ServersBoard Serv) {
+        System.out.println("\nTSP Simulated Annealing  -->");
         try {
             Problem problem =  new Problem(Serv, new ServersSuccessorFunction(), new ServersGoalTest(), new ServersHeuristicFunction());
             Search search =  new HillClimbingSearch();
