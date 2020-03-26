@@ -39,7 +39,7 @@ public class ServersSuccessorFunction {
 
     public ArrayList genera_successors_aleatori(Object eactual) {
         ServersBoard board = (ServersBoard) eactual;
-        ServersBoard emodificat;
+        ServersBoard emodificat = new ServersBoard(board.getRequests(), board.getServers());
         boolean generat = false;
         int sa, s, a1, a2;
         int npeticions = board.getSize();
