@@ -10,10 +10,6 @@ public class ServersBoard {
 
     private Requests requests;
     private Servers servers;
-    private ArrayList< ArrayList<Integer> > temps;
-    private ArrayList< ArrayList<Integer> > serxfitxer;
-
-
     private static ArrayList<Integer> Board;
 
     public static String MOURE = "Moure";
@@ -24,35 +20,45 @@ public class ServersBoard {
         int[] prov;
         Set<Integer> prov2;
         Integer tempo, tempo2, max = 0, min_ser = -1;
-        ArrayList<Integer> p, q;
         Iterator itr;
         for(int i = 0; i < requests.size(); ++i) {
             prov = requests.getRequest(i);
             prov2 = servers.fileLocations(prov[1]);
-            p = null;
-            q = null;
             itr = prov2.iterator();
             while (itr.hasNext()){
                 tempo = (Integer) itr.next();
                 tempo2 =  servers.tranmissionTime(tempo, prov[0]);
-                p.add(tempo);
-                q.add(tempo2);
                 if (tempo2 > max) {
                     max = tempo2;
                     min_ser = tempo;
                 }
             }
-            temps.add(p);
-            serxfitxer.add(q);
             Board.add(min_ser);
         }
     }
 
-    public static ArrayList<Integer> comprova_servidors(Integer p){   //falta implementar
+   /* public ServersBoard(Requests req, Servers serv) {
+        requests = req;
+        servers = serv;
+        int[] prov;
+        Set<Integer> prov2;
+        Iterator itr;
+        for(int i = 0; i < requests.size(); ++i) {
+            prov = requests.getRequest(i);
+            prov2 = servers.fileLocations(prov[1]);
+            itr = prov2.iterator();
+            if (itr.hasNext()){
+                Board.add((Integer) itr.next());
+            }
+
+        }
+    }*/
+
+    public ArrayList<Integer> comprova_servidors(Integer p){   //fet
         ArrayList<Integer> posibles_servidors = null;
-        //int[] peticio = requests.getRequest(i);
-        //return peticio[1];
-        //file locations(if_fitxer) = vectors de id de servidors on esta
+        int[] peticio = requests.getRequest(p);
+        Set<Integer> servidors = servers.fileLocations(peticio[1]);
+        posibles_servidors.addAll(servidors);
         return posibles_servidors;
     }
 
