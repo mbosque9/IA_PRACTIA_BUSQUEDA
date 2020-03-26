@@ -17,7 +17,6 @@ public class ServersSuccessorFunction {
 
     public ArrayList genera_successors(Object eactual) {
         ServersBoard board = (ServersBoard) eactual;
-        ServersBoard emodificat;
         int sa, s;
         int npeticions = board.getSize();
         ArrayList<Integer> ssp;
@@ -28,7 +27,7 @@ public class ServersSuccessorFunction {
             for (int j = 0; j < ssp.size(); j++) {      //recorro cada servidor que te el fitxer
                 s = ssp.get(j);
                 if (sa != s) {      //comprovo que no siguin el mateix servidor
-                    emodificat  = new ServersBoard(board.getRequests(), board.getServers());
+                    ServersBoard emodificat = new ServersBoard(board.getRequests(), board.getServers());;
                     emodificat.moure_servidor(i,s);       //a la posició i vull posar el nou servidor s
                     successors.add(new Successor(emodificat));      //com transpes pero espera 2 params CERC QUE SHA DE FICAR UN STRING DE QUIN MOVIMENT HAS FET
                 }
@@ -39,7 +38,6 @@ public class ServersSuccessorFunction {
 
     public ArrayList genera_successors_aleatori(Object eactual) {
         ServersBoard board = (ServersBoard) eactual;
-        ServersBoard emodificat;
         boolean generat = false;
         int sa, s, a1, a2;
         int npeticions = board.getSize();
@@ -52,7 +50,7 @@ public class ServersSuccessorFunction {
             a2 = genera_aleatori(ssp.size());
             s = ssp.get(a2);
             if (sa != s) {      //comprovo que no siguin el mateix servidor
-                emodificat = new ServersBoard(board.getRequests(), board.getServers());
+                ServersBoard emodificat = new ServersBoard(board.getRequests(), board.getServers());
                 emodificat.moure_servidor(a1,s);
                 successors.add(new Successor(emodificat));      //com transpes pero espera 2 params
                 generat = true;
