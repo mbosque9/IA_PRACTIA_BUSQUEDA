@@ -19,7 +19,7 @@ public class ServersBoard {
     public ServersBoard(Requests req, Servers serv) {
         requests = req;
         servers = serv;
-        Vector<Integer> prov, prov2;
+        int[] prov, prov2;
         Pair<Integer, Integer> temp;
         for(int i = 0; i < requests.size(); ++i) {
             prov = requests.getRequest(i);
@@ -60,5 +60,7 @@ public class ServersBoard {
 
     public int getServidor(int i) {
         //donat la peticio numero i vull saber el fixter associat
+        int[] peticio = requests.getRequest(i);
+        return peticio[1];
     }
 }
