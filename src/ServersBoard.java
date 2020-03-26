@@ -1,3 +1,5 @@
+import IA.DistFS.Requests;
+import IA.DistFS.Servers;
 import aima.search.framework.Metrics;
 import javafx.util.Pair;
 
