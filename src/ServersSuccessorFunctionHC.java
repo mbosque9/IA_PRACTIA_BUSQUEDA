@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Random;
 
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
