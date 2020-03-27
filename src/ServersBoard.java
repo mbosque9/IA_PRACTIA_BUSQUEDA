@@ -54,7 +54,7 @@ public class ServersBoard {
         }
     }*/
 
-    public ArrayList<Integer> comprova_servidors(Integer p){   //fet
+    public ArrayList<Integer> conjunt_servidors(Integer p){   //fet
         ArrayList<Integer> posibles_servidors = null;
         int[] peticio = requests.getRequest(p);
         Set<Integer> servidors = servers.fileLocations(peticio[1]);
@@ -78,7 +78,7 @@ public class ServersBoard {
         return Board.size();
     }
 
-    public int getServidor(int i) {     //fet
+    public int getFitxer(int i) {     //fet
         //donat la peticio numero i vull saber el fitxer associat
         int[] peticio = requests.getRequest(i);
         return peticio[1];
@@ -88,7 +88,22 @@ public class ServersBoard {
         return requests.getRequest(i);
     }
 
-    public int getTransmissionTime(int s, int uID) {
-        return servers.tranmissionTime(s,uID);
+    public int getTransmissionTime(int s, int fID) {
+        return servers.tranmissionTime(s,fID);
     }
+
+    public int getServidor(int i) {
+       return Board.get(i);
+    }
+
+    /*public int[] getNumFitxers(Integer i){
+        int[] info = new int[2];
+        info[0] = Board.get(i);
+        int num = 1;
+        for(int k = i + 1; k < Board.size(); ++i){
+            if(Board.get(i).equals(Board.get(k))) num++;
+        }
+        info[1] = num;
+        return info;
+    }*/
 }
