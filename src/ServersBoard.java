@@ -35,6 +35,7 @@ public class ServersBoard {
             }
             Board.add(min_ser);
         }
+        System.out.println("board: " + Board.size() + "request: " + requests.size());
     }
 
    /* public ServersBoard(Requests req, Servers serv) {
