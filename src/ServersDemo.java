@@ -1,9 +1,4 @@
-import java.util.Iterator;
-import java.util.List;
-import java.util.Properties;
-
 import IA.DistFS.Requests;
-import java.lang.Object;
 import IA.DistFS.Servers;
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
@@ -11,13 +6,17 @@ import aima.search.framework.SearchAgent;
 import aima.search.informed.HillClimbingSearch;
 import aima.search.informed.SimulatedAnnealingSearch;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.Properties;
+
 
 public class ServersDemo {
     public static void main(String[] args) throws Servers.WrongParametersException {
         int usuaris, max_peticions, seedr, servidors, min_replic, seeds;
-        usuaris = 200;
+        usuaris = 3;
         max_peticions = 5;
-        servidors = 50;
+        servidors = 10;
         min_replic = 5;
         seedr = seeds = 1;
         Requests requests =  new Requests(usuaris, max_peticions, seedr);
