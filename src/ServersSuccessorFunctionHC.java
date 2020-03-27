@@ -16,7 +16,7 @@ public class ServersSuccessorFunctionHC implements SuccessorFunction {
 
         for (int i = 0; i < npeticions; i++) {
             sa = board.getServidor(i);
-            ssp = board.conjunt_servidors(sa);
+            ssp = board.conjunt_servidors(i);
             for (int j = 0; j < ssp.size(); j++) {      //recorro cada servidor que te el fitxer
                 s = ssp.get(j);
                 if (sa != s) {      //comprovo que no siguin el mateix servidor

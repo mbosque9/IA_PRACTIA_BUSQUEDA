@@ -17,9 +17,9 @@ public class ServersDemo {
         int usuaris, max_peticions, seedr, servidors, min_replic, seeds;
         usuaris = 3;
         max_peticions = 5;
-        servidors = 10;
-        min_replic = 5;
-        seedr = seeds = 1;
+        servidors = 5;
+        min_replic = 1;
+        seedr = seeds = 2;
         Requests requests =  new Requests(usuaris, max_peticions, seedr);
         Servers servers = new Servers(servidors, min_replic, seeds);
 
@@ -71,8 +71,9 @@ public class ServersDemo {
 
     private static void printActions(List actions) {
         for (int i = 0; i < actions.size(); i++) {
-            String action = (String) actions.get(i);
-            System.out.println(action);
+            String action =  actions.get(i).toString();
+            System.out.println(actions);
         }
+
     }
 }

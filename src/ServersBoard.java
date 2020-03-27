@@ -35,9 +35,10 @@ public class ServersBoard {
             }
             Board.add(min_ser);
         }
+        System.out.println("mida b: " + Board.size());
     }
 
-   /* public ServersBoard(Requests req, Servers serv) {
+    /*public ServersBoard(Requests req, Servers serv) {
         requests = req;
         servers = serv;
         int[] prov;
