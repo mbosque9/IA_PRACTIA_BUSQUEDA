@@ -10,7 +10,7 @@ public class ServersBoard {
 
     private Requests requests;
     private Servers servers;
-    private static ArrayList<Integer> Board;
+    private static ArrayList<Integer> Board = new ArrayList<Integer>();
 
     public static String MOURE = "Moure";
 
