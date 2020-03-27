@@ -1,11 +1,14 @@
+import aima.search.framework.Successor;
+import aima.search.framework.SuccessorFunction;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import aima.search.framework.Successor;
-import aima.search.framework.SuccessorFunction;
-
 public class ServersSuccessorFunctionSA implements SuccessorFunction {
+
+    private ArrayList successors = new ArrayList();
+
 
     public static int genera_aleatori(int limit) {
         //Genera un nombre aleatori entre 0 i limit-1
