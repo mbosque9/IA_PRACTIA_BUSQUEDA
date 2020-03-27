@@ -96,14 +96,4 @@ public class ServersBoard {
        return Board.get(i);
     }
 
-    /*public int[] getNumFitxers(Integer i){
-        int[] info = new int[2];
-        info[0] = Board.get(i);
-        int num = 1;
-        for(int k = i + 1; k < Board.size(); ++i){
-            if(Board.get(i).equals(Board.get(k))) num++;
-        }
-        info[1] = num;
-        return info;
-    }*/
 }
