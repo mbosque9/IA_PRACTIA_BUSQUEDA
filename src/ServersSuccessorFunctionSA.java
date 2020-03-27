@@ -24,11 +24,10 @@ public class ServersSuccessorFunctionSA implements SuccessorFunction {
         while (!generat) {
             a1 = genera_aleatori(npeticions);        //indicara una peticio
             sa = board.getServidor(a1);              //servidor associat a la peticio
-            ssp = board.conjunt_servidors(sa);      //nomes em poden tocar servidors que tinguin el fitxer
+            ssp = board.conjunt_servidors(a1);      //nomes em poden tocar servidors que tinguin el fitxer
             a2 = genera_aleatori(ssp.size());
             s = ssp.get(a2);
             if (sa != s) {      //comprovo que no siguin el mateix servidor
-                //ServersBoard emodificat = new ServersBoard(board.getRequests(), board.getServers());
                 ServersBoard emodificat = board;
                 emodificat.moure_servidor(a1,s);
                 String S = ServersBoard.MOURE + " el servidor " + s + " a la petició" + a1;
