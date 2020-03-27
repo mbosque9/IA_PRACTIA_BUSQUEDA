@@ -38,6 +38,12 @@ public class ServersBoard {
         System.out.println("mida b: " + Board.size());
     }
 
+    public ServersBoard(Requests req, Servers serv, ArrayList<Integer> bor) {
+        requests = req;
+        servers = serv;
+        Board = bor;
+    }
+
     /*public ServersBoard(Requests req, Servers serv) {
         requests = req;
         servers = serv;
@@ -95,6 +101,10 @@ public class ServersBoard {
 
     public int getServidor(int i) {
        return Board.get(i);
+    }
+
+    public ArrayList<Integer> getBoard() {
+        return Board;
     }
 
 }
