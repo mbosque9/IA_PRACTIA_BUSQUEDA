@@ -36,6 +36,9 @@ public class ServersBoard {
             Board.add(min_ser);
         }
         System.out.println("mida b: " + Board.size());
+        for (int a = 0; a < Board.size(); a++) {
+            System.out.println("La peticio  "+ a + "  te assignat el servidor  " + Board.get(a));
+        }
     }
 
     /*public ServersBoard(Requests req, Servers serv) {
