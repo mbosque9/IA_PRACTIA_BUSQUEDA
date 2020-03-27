@@ -8,7 +8,6 @@ public class ServersHeuristicFunction implements HeuristicFunction  {
         int tmax = 0;
         int s, uID, tt;
         int[] ip;
-        System.out.println(board.getSize());
         for (int i = 0; i < board.getSize(); i++) {
             s = board.getServidor(i);
             ip = board.getRequest(i);    //arraylist amb info petició (userID, fileID)

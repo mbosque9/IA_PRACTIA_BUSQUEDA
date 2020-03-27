@@ -21,7 +21,6 @@ public class ServersBoard {
         Set<Integer> prov2;
         Integer tempo, tempo2, max = 0, min_ser = -1;
         Iterator itr;
-        System.out.println(requests.size());
         for(int i = 0; i < requests.size(); ++i) {
             prov = requests.getRequest(i);
             prov2 = servers.fileLocations(prov[1]);
@@ -34,7 +33,6 @@ public class ServersBoard {
                     min_ser = tempo;
                 }
             }
-            System.out.println(min_ser);
             Board.add(min_ser);
         }
     }

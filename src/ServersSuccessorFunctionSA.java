@@ -1,8 +1,8 @@
-import java.util.ArrayList;
-import java.util.Random;
-
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class ServersSuccessorFunctionSA implements SuccessorFunction {
 
@@ -28,7 +28,7 @@ public class ServersSuccessorFunctionSA implements SuccessorFunction {
             a2 = genera_aleatori(ssp.size());
             s = ssp.get(a2);
             if (sa != s) {      //comprovo que no siguin el mateix servidor
-                ServersBoard emodificat = new ServersBoard(board.getRequests(), board.getServers());
+                ServersBoard emodificat = board;
                 emodificat.moure_servidor(a1,s);
                 String S = ServersBoard.MOURE + " el servidor " + s + " a la petició" + a1;
                 successors.add(new Successor(S,emodificat));
