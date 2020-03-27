@@ -15,11 +15,11 @@ import aima.search.informed.SimulatedAnnealingSearch;
 public class ServersDemo {
     public static void main(String[] args) throws Servers.WrongParametersException {
         int usuaris, max_peticions, seedr, servidors, min_replic, seeds;
-        usuaris = 4;
+        usuaris = 200;
         max_peticions = 5;
-        servidors = 4;
-        min_replic = 2;
-        seedr = seeds = 1;
+        servidors = 50;
+        min_replic = 5;
+        seedr = seeds = 2;
         Requests requests =  new Requests(usuaris, max_peticions, seedr);
         Servers servers = new Servers(servidors, min_replic, seeds);
 
@@ -70,9 +70,13 @@ public class ServersDemo {
     }
 
     private static void printActions(List actions) {
+        System.out.println("1");
         for (int i = 0; i < actions.size(); i++) {
-            String action = (String) actions.get(i);
+            System.out.println("2");
+            String action =  actions.get(i).toString();
+            System.out.println("3");
             System.out.println(action);
         }
+        System.out.println("4");
     }
 }

@@ -14,7 +14,7 @@ public class ServersBoard {
 
     public static String MOURE = "Moure";
 
-    public ServersBoard(Requests req, Servers serv) {
+    /*public ServersBoard(Requests req, Servers serv) {
         requests = req;
         servers = serv;
         int[] prov;
@@ -35,10 +35,9 @@ public class ServersBoard {
             }
             Board.add(min_ser);
         }
-        System.out.println("board: " + Board.size() + "request: " + requests.size());
-    }
+    }*/
 
-   /* public ServersBoard(Requests req, Servers serv) {
+    public ServersBoard(Requests req, Servers serv) {
         requests = req;
         servers = serv;
         int[] prov;
@@ -53,7 +52,7 @@ public class ServersBoard {
             }
 
         }
-    }*/
+    }
 
     public ArrayList<Integer> conjunt_servidors(Integer p){   //fet
         ArrayList<Integer> posibles_servidors = new  ArrayList<Integer>();
