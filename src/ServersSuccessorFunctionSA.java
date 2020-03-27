@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import aima.search.framework.Successor;
@@ -6,15 +7,13 @@ import aima.search.framework.SuccessorFunction;
 
 public class ServersSuccessorFunctionSA implements SuccessorFunction {
 
-    private ArrayList successors = new ArrayList();
-
-
     public static int genera_aleatori(int limit) {
         //Genera un nombre aleatori entre 0 i limit-1
         return new Random().nextInt(limit);
     }
 
-    public ArrayList getSuccessors(Object eactual) {
+    public List getSuccessors(Object eactual) {
+        ArrayList successors = new ArrayList();
         ServersBoard board = (ServersBoard) eactual;
         boolean generat = false;
         int sa, s, a1, a2;

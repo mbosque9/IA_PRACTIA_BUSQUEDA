@@ -1,14 +1,13 @@
 import java.util.ArrayList;
+import java.util.List;
 
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
 
 public class ServersSuccessorFunctionHC implements SuccessorFunction {
 
-    private ArrayList successors = new ArrayList();
-
-
-    public ArrayList getSuccessors(Object eactual) {
+    public List getSuccessors(Object eactual) {
+        ArrayList successors = new ArrayList();
         ServersBoard board = (ServersBoard) eactual;
         int sa, s;
         int npeticions = board.getSize();
