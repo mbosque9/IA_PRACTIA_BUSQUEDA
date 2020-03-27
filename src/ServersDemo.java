@@ -32,7 +32,7 @@ public class ServersDemo {
     private static void ServersSimulatedAnnealingSearch(ServersBoard Serv) {
         try {
             System.out.println("\n TSP Simulated Annealing");
-            Problem problem =  new Problem(Serv, new ServersSuccessorFunctionSA(), new ServersGoalTest(), new ServersHeuristicFunction2());
+            Problem problem =  new Problem(Serv, new ServersSuccessorFunctionSA(), new ServersGoalTest(), new ServersHeuristicFunction());
             Search search =  new SimulatedAnnealingSearch();
             SearchAgent agent = new SearchAgent(problem,search);
 
@@ -47,7 +47,7 @@ public class ServersDemo {
     private static void ServersHillClimbingSearch(ServersBoard Serv) {
         System.out.println("\n nTSP HillClimbing -->");
         try {
-            Problem problem =  new Problem(Serv, new ServersSuccessorFunctionHC(), new ServersGoalTest(), new ServersHeuristicFunction2());
+            Problem problem =  new Problem(Serv, new ServersSuccessorFunctionHC(), new ServersGoalTest(), new ServersHeuristicFunction());
             Search search =  new HillClimbingSearch();
             SearchAgent agent = new SearchAgent(problem,search);
 
