@@ -15,10 +15,10 @@ import aima.search.informed.SimulatedAnnealingSearch;
 public class ServersDemo {
     public static void main(String[] args) throws Servers.WrongParametersException {
         int usuaris, max_peticions, seedr, servidors, min_replic, seeds;
-        usuaris = 200;
+        usuaris = 3;
         max_peticions = 5;
-        servidors = 50;
-        min_replic = 5;
+        servidors = 5;
+        min_replic = 1;
         seedr = seeds = 2;
         Requests requests =  new Requests(usuaris, max_peticions, seedr);
         Servers servers = new Servers(servidors, min_replic, seeds);
@@ -32,7 +32,7 @@ public class ServersDemo {
     private static void ServersSimulatedAnnealingSearch(ServersBoard Serv) {
         try {
             System.out.println("\n TSP Simulated Annealing");
-            Problem problem =  new Problem(Serv, new ServersSuccessorFunctionSA(), new ServersGoalTest(), new ServersHeuristicFunction());
+            Problem problem =  new Problem(Serv, new ServersSuccessorFunctionSA(), new ServersGoalTest(), new ServersHeuristicFunction2());
             Search search =  new SimulatedAnnealingSearch();
             SearchAgent agent = new SearchAgent(problem,search);
 
@@ -47,7 +47,7 @@ public class ServersDemo {
     private static void ServersHillClimbingSearch(ServersBoard Serv) {
         System.out.println("\n nTSP HillClimbing -->");
         try {
-            Problem problem =  new Problem(Serv, new ServersSuccessorFunctionHC(), new ServersGoalTest(), new ServersHeuristicFunction());
+            Problem problem =  new Problem(Serv, new ServersSuccessorFunctionHC(), new ServersGoalTest(), new ServersHeuristicFunction2());
             Search search =  new HillClimbingSearch();
             SearchAgent agent = new SearchAgent(problem,search);
 
@@ -70,13 +70,10 @@ public class ServersDemo {
     }
 
     private static void printActions(List actions) {
-        System.out.println("1");
         for (int i = 0; i < actions.size(); i++) {
-            System.out.println("2");
             String action =  actions.get(i).toString();
-            System.out.println("3");
-            System.out.println(action);
+            System.out.println(actions);
         }
-        System.out.println("4");
+
     }
 }
