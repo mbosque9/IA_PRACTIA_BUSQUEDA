@@ -11,30 +11,34 @@ public class ServersHeuristicFunction2 implements HeuristicFunction  {
     int num_servidors = 0;
     double variancia;
     //vector de servidors trobats al estat amb el numero de cops que surt
-    ArrayList<Pair<Integer,Integer>> servidors_visitats;
-
+    ArrayList<Integer> visitats = new ArrayList<Integer>();
+    ArrayList<Integer> cops = new ArrayList<Integer>();
 
     public double getHeuristicValue(Object state) {
         ServersBoard board=(ServersBoard)state;
         num_fitxer = board.getSize();
+        num_servidors = 0;
         for(int i = 0; i < board.getSize(); ++i) {
             int idServidor = board.getServidor(i);
-            suma_temps += board.getTransmissionTime(idServidor,board.getFitxer(i));
-            //si un servidor no ha sigut visitat encara, lafageixo a visitats amb 1 cop visitat
-            if(!Visitat(idServidor).getKey()) {
-                Pair<Integer, Integer> pair = new Pair<>(idServidor, 1);
-                servidors_visitats.add(pair);
+            if (i== 0){
+                visitats.add(idServidor);
+                cops.add(1);
             }
 
+            suma_temps += board.getTransmissionTime(idServidor,board.getFitxer(i));
+            //si un servidor no ha sigut visitat encara, lafageixo a visitats amb 1 cop visitat
+            if(!vist(idServidor)) {
+                visitats.add(idServidor);
+                cops.add(1);
+            }
             //si ja ha sigut visitat, sumo 1 als cops que ho ha estat
            else{
-                int pos_servidor = Visitat(idServidor).getValue();
-                int num_cops = servidors_visitats.get(pos_servidor).getValue();
-                int servidor = servidors_visitats.get(pos_servidor).getKey();
-                servidors_visitats.set(pos_servidor, new Pair<>(servidor,num_cops));
+                int pos_servidor = pos(idServidor);
+                int num_cops = cops.get(pos_servidor);
+                cops.set(pos_servidor,num_cops++);
             }
         }
-        num_servidors = servidors_visitats.size();
+        num_servidors = visitats.size();
         mitjana = num_fitxer/num_servidors;
         variancia = calcularVariancia();
 
@@ -43,24 +47,42 @@ public class ServersHeuristicFunction2 implements HeuristicFunction  {
 
     private double calcularVariancia() {
         double var = 0;
-        for(int i = 0; i < servidors_visitats.size(); ++i){
-            int num_cops = servidors_visitats.get(i).getValue();
+        for(int i = 0; i < visitats.size(); ++i){
+            int num_cops = cops.get(i);
             var += Math.pow(num_cops - mitjana,2);
         }
-        return var/(servidors_visitats.size()-1);
+        return var/(visitats.size()-1);
     }
 
-    private Pair< Boolean,Integer> Visitat(int idServidor) {
+    /*private Pair< Boolean,Integer> Visitat(int idServidor) {
         //busco si un servidor ja ha sigut visitat, en cas positiu retorno en quina posicio es troba
         int i = 0;
+        System.out.println("ser: " + idServidor);
         Pair<Boolean, Integer> pair = new Pair<>(false, -1);
-        while (i < servidors_visitats.size() && !pair.getKey()){
-            if(servidors_visitats.get(i).equals(idServidor)){
+        while (i < num_servidors && !pair.getKey()){
+            if(servidors_visitats.get(i).getKey().equals(idServidor)){
                 pair = new Pair<>(true,i);
             }
             ++i;
         }
         return pair;
+    }*/
+
+    private  boolean vist(int s){
+        boolean trobat = false;
+        int i = 0;
+        while(i < visitats.size() && !trobat){
+            if(visitats.get(i).equals(s)) trobat = true;
+        }
+        return trobat;
+    }
+
+    private int pos(int s){
+        int sol = -1;
+        for(int i = 0; i<visitats.size(); ++i){
+            if(visitats.get(i).equals(s)) sol = i;
+        }
+        return sol;
     }
 
 }
