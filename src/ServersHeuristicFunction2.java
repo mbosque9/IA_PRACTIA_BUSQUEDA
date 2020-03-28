@@ -52,7 +52,6 @@ public class ServersHeuristicFunction2 implements HeuristicFunction  {
         variancia = calcularVariancia();
 
         double h = suma_temps + (variancia*100*board.getSize());
-        System.out.println("h: " + h);
         return h;
 
     }

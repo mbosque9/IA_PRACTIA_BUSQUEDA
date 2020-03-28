@@ -13,19 +13,23 @@ import java.util.Properties;
 
 public class ServersDemo {
     public static void main(String[] args) throws Servers.WrongParametersException {
+        long inicio = System.currentTimeMillis();
         int usuaris, max_peticions, seedr, servidors, min_replic, seeds;
         usuaris = 200;
-        max_peticions = 1;
+        max_peticions = 5;
         servidors = 50;
-        min_replic = 3;
-        seedr = seeds = 1;
+        min_replic = 5;
+        seedr = seeds = 10;
         Requests requests =  new Requests(usuaris, max_peticions, seedr);
         Servers servers = new Servers(servidors, min_replic, seeds);
 
         // write your code here
         ServersBoard Serv =new ServersBoard(requests, servers, servidors);
-       // ServersHillClimbingSearch(Serv);
-        ServersSimulatedAnnealingSearch(Serv);
+        ServersHillClimbingSearch(Serv);
+        //ServersSimulatedAnnealingSearch(Serv);
+        long fin = System.currentTimeMillis();
+        double tiempo = (double) ((fin - inicio)/1000);
+        System.out.println(tiempo +" segundos");
     }
 
     private static void ServersSimulatedAnnealingSearch(ServersBoard Serv) {
@@ -71,7 +75,7 @@ public class ServersDemo {
     private static void printActions(List actions) {
         for (int i = 0; i < actions.size(); i++) {
             String action =  actions.get(i).toString();
-            System.out.println(actions);
+            System.out.println(action);
         }
 
     }

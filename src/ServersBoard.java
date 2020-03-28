@@ -14,9 +14,11 @@ public class ServersBoard {
 
     public static String MOURE = "Moure";
 
-    /*public ServersBoard(Requests req, Servers serv) {
+    //EL MILLOR
+    /*public ServersBoard(Requests req, Servers serv, Integer servidors) {
         requests = req;
         servers = serv;
+        num_servidors = servidors;
         int[] prov;
         Set<Integer> prov2;
         Integer tempo, tempo2, max, min_ser;
@@ -38,14 +40,6 @@ public class ServersBoard {
             Board.add(min_ser);
             Boardtemps.add(max);
         }
-        System.out.println("mida b: " + Board.size());
-        for (int a = 0; a < Board.size(); a++) {
-            System.out.println("La peticio  "+ a + "  te assignat el servidor  " + Board.get(a));
-        }
-        System.out.println("requests: ");
-        for (int i = 0; i<requests.size(); ++i){
-            System.out.println("fitxer: " + getFitxer(i) + " usuari: " + getUsuari(i));
-        }
     }*/
 
     public ServersBoard(final ArrayList<Integer> bor, ArrayList<Integer> temps) {
@@ -53,6 +47,7 @@ public class ServersBoard {
         this.Boardtemps = (ArrayList<Integer>) temps.clone();
     }
 
+    //EL PRIMER
     public ServersBoard(Requests req, Servers serv, int servidors) {
         requests = req;
         servers = serv;
@@ -70,8 +65,34 @@ public class ServersBoard {
                 Boardtemps.add(servers.tranmissionTime(p, getUsuari(i)));
             }
         }
-
     }
+
+    //ALEATORI
+   /*public ServersBoard(Requests req, Servers serv, int servidors) {
+        requests = req;
+        servers = serv;
+        num_servidors = servidors;
+        Random myRandom = new Random();
+        int[] prov;
+        Set<Integer> prov2;
+        Iterator itr;
+        for(int i = 0; i < requests.size(); ++i) {
+            prov = requests.getRequest(i);
+            prov2 = servers.fileLocations(prov[1]);
+            itr = prov2.iterator();
+            int num_aleatori = myRandom.nextInt(prov2.size());
+            int j = 0;
+            while (itr.hasNext()) {
+                if(j < num_aleatori) itr.hasNext();
+                else {
+                    Integer p = (Integer) itr.next();
+                    Board.add(p);
+                    Boardtemps.add(servers.tranmissionTime(p, getUsuari(i)));
+                }
+                ++j;
+            }
+        }
+    }*/
 
     public ArrayList<Integer> conjunt_servidors(Integer p){   //fet
         ArrayList<Integer> posibles_servidors = new  ArrayList<Integer>();

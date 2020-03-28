@@ -26,8 +26,8 @@ public class ServersSuccessorFunctionHC implements SuccessorFunction {
                     ServersBoard emodificat = new ServersBoard(board.getBoard(), board.getBoardtemps());
                     emodificat.moure_servidor(i,s, t);       //a la posició i vull posar el nou servidor s
                     double h = Heur.getHeuristicValue(emodificat);
-                    double h2 = Heur2.getHeuristicValue(emodificat);
-                    String S = ServersBoard.MOURE + " el servidor " + s + " a la petició " + i + " Coste (" + h2 + ")";
+                    //double h2 = Heur2.getHeuristicValue(emodificat);
+                    String S = ServersBoard.MOURE + " el servidor " + s + " a la petició " + i + " Coste (" + h + ")";
                     successors.add(new Successor(S,emodificat));
                 }
             }
