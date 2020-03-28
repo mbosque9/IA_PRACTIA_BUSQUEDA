@@ -54,7 +54,7 @@ public class ServersSuccessorFunctionSA implements SuccessorFunction {
                 }
 
                 double h = Heur.getHeuristicValue(emodificat);
-                String S = ServersBoard.MOURE + " el servidor " + s + " a la petició" + a1 + " Coste(" + h + ") ----> " + emodificat.toString();
+                String S = ServersBoard.MOURE + " el servidor " + s + " a la petició" + a1 + " Coste(" + h + ")" ;
                 successors.add(new Successor(S, emodificat));
                 generat = true;
             }
