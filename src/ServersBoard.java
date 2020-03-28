@@ -46,6 +46,8 @@ public class ServersBoard {
             System.out.println("fitxer: " + getFitxer(i) + " usuari: " + getUsuari(i));
         }
 
+
+
     }
 
     public ServersBoard(final ArrayList<Integer> bor, ArrayList<Integer> temps) {

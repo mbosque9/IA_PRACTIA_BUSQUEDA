@@ -18,9 +18,12 @@ public class ServersSuccessorFunctionHC implements SuccessorFunction {
         for (int i = 0; i < npeticions; i++) {
             sa = board.getServidor(i);
             ssp = board.conjunt_servidors(i);
+            System.out.println("servidor estat: " + sa);
             for (int j = 0; j < ssp.size(); j++) {      //recorro cada servidor que te el fitxer
                 s = ssp.get(j);
+                System.out.println("servidor posible: " + s);
                 if (sa != s) {      //comprovo que no siguin el mateix servidor
+                    System.out.println("entro if ");
                     ServersBoard emodificat = new ServersBoard(board.getBoard(), board.getBoardtemps());
                     emodificat.moure_servidor(i,s);       //a la posició i vull posar el nou servidor s
                     for (int a = 0; a < emodificat.getSize(); a++) {
