@@ -1,8 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
-
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ServersSuccessorFunctionHC implements SuccessorFunction {
 
@@ -25,7 +25,7 @@ public class ServersSuccessorFunctionHC implements SuccessorFunction {
             for (int j = 0; j < ssp.size(); j++) {      //recorro cada servidor que te el fitxer
                 s = ssp.get(j);
                 if (sa != s) {      //comprovo que no siguin el mateix servidor
-                    ServersBoard emodificat = new ServersBoard(board.getRequests(), board.getServers(), board.getBoard());
+                    ServersBoard emodificat = new ServersBoard(board.getBoard());
 
                     System.out.println("\n\n-----------------------------------------------------------------------------------");
                     System.out.println("\nL'estat emodificat es (hauria de ser el actual):");
@@ -45,7 +45,7 @@ public class ServersSuccessorFunctionHC implements SuccessorFunction {
                 }
             }
         }
-        return successors;
+        return (successors);
     }
 
 }

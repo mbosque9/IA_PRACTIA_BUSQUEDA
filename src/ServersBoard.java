@@ -1,16 +1,15 @@
 import IA.DistFS.Requests;
 import IA.DistFS.Servers;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 public class ServersBoard {
 
 
     private Requests requests;
     private Servers servers;
-    private static ArrayList<Integer> Board = new ArrayList<Integer>();
+    private final ArrayList<Integer> Board = new ArrayList<Integer>();
+    private final ArrayList<Integer> Boardtemps = new ArrayList<Integer>();
 
     public static String MOURE = "Moure";
 
@@ -19,7 +18,7 @@ public class ServersBoard {
         servers = serv;
         int[] prov;
         Set<Integer> prov2;
-        Integer tempo, tempo2, max = 0, min_ser = -1;
+        Integer tempo, tempo2, max = 501, min_ser = -1;
         Iterator itr;
         for(int i = 0; i < requests.size(); ++i) {
             prov = requests.getRequest(i);
@@ -28,12 +27,13 @@ public class ServersBoard {
             while (itr.hasNext()){
                 tempo = (Integer) itr.next();
                 tempo2 =  servers.tranmissionTime(tempo, prov[0]);
-                if (tempo2 > max) {
+                if (tempo2 < max) {
                     max = tempo2;
                     min_ser = tempo;
                 }
             }
             Board.add(min_ser);
+            Boardtemps.add(max);
         }
         System.out.println("mida b: " + Board.size());
         for (int a = 0; a < Board.size(); a++) {
@@ -41,11 +41,10 @@ public class ServersBoard {
         }
     }
 
-    public ServersBoard(Requests req, Servers serv, ArrayList<Integer> bor) {
-        requests = req;
-        servers = serv;
-        Board = bor;
+    public ServersBoard(final ArrayList<Integer> bor) {
+        this.Board = ;
     }
+
 
     /*public ServersBoard(Requests req, Servers serv) {
         requests = req;
@@ -72,7 +71,7 @@ public class ServersBoard {
         return posibles_servidors;
     }
 
-    public static void moure_servidor(int i, int s) {  //fet
+    public  void moure_servidor(int i, int s) {  //fet
         Board.set(i,s);
     }
 
@@ -107,7 +106,11 @@ public class ServersBoard {
     }
 
     public ArrayList<Integer> getBoard() {
-        return Board;
+        return (ArrayList<Integer>) Board.clone();
+    }
+
+    public ArrayList<Integer> getBoardtemps() {
+        return (ArrayList<Integer>) Boardtemps.clone();
     }
 
 }
