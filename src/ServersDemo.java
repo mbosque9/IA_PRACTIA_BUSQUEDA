@@ -14,25 +14,25 @@ import java.util.Properties;
 public class ServersDemo {
     public static void main(String[] args) throws Servers.WrongParametersException {
         int usuaris, max_peticions, seedr, servidors, min_replic, seeds;
-        usuaris = 5;
+        usuaris = 200;
         max_peticions = 1;
-        servidors = 4;
-        min_replic = 1;
+        servidors = 50;
+        min_replic = 3;
         seedr = seeds = 1;
         Requests requests =  new Requests(usuaris, max_peticions, seedr);
         Servers servers = new Servers(servidors, min_replic, seeds);
 
         // write your code here
         ServersBoard Serv =new ServersBoard(requests, servers, servidors);
-        ServersHillClimbingSearch(Serv);
-       // ServersSimulatedAnnealingSearch(Serv);
+       // ServersHillClimbingSearch(Serv);
+        ServersSimulatedAnnealingSearch(Serv);
     }
 
     private static void ServersSimulatedAnnealingSearch(ServersBoard Serv) {
         try {
             System.out.println("\n TSP Simulated Annealing");
             Problem problem =  new Problem(Serv, new ServersSuccessorFunctionSA(), new ServersGoalTest(), new ServersHeuristicFunction());
-            Search search =  new SimulatedAnnealingSearch();
+            Search search =  new SimulatedAnnealingSearch(2000,100,5,0.001);
             SearchAgent agent = new SearchAgent(problem,search);
 
             System.out.println();

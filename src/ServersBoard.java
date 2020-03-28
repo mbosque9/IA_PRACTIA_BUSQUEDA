@@ -70,9 +70,7 @@ public class ServersBoard {
                 Boardtemps.add(servers.tranmissionTime(p, getUsuari(i)));
             }
         }
-        imprimirBoard();
-        System.out.println("------------------------------");
-        imprimirRequests();
+
     }
 
     public ArrayList<Integer> conjunt_servidors(Integer p){   //fet
