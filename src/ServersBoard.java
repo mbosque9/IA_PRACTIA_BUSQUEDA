@@ -8,8 +8,8 @@ public class ServersBoard {
 
     private Requests requests;
     private Servers servers;
-    private final ArrayList<Integer> Board = new ArrayList<Integer>();
-    private final ArrayList<Integer> Boardtemps = new ArrayList<Integer>();
+    private  ArrayList<Integer> Board = new ArrayList<Integer>();
+    private  ArrayList<Integer> Boardtemps = new ArrayList<Integer>();
 
     public static String MOURE = "Moure";
 
@@ -42,8 +42,8 @@ public class ServersBoard {
     }
 
     public ServersBoard(final ArrayList<Integer> bor, ArrayList<Integer> temps) {
-        this.Board = ;
-        this.Boardtemps = ;
+        this.Board = (ArrayList<Integer>) bor.clone();
+        this.Boardtemps = (ArrayList<Integer>) temps.clone();
     }
 
 
@@ -93,6 +93,12 @@ public class ServersBoard {
         int[] peticio = requests.getRequest(i);
         return peticio[1];
     }
+    public int getUsuari(int i) {     //fet
+        //donat la peticio numero i vull saber el fitxer associat
+        int[] peticio = requests.getRequest(i);
+        return peticio[0];
+    }
+
 
     public int[] getRequest(int i) {
         return requests.getRequest(i);

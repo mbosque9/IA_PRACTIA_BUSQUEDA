@@ -16,8 +16,11 @@ public class ServersSuccessorFunctionSA implements SuccessorFunction {
     }
 
     public List getSuccessors(Object eactual) {
-        ArrayList successors = new ArrayList();
+
+        ArrayList<Successor> successors = new ArrayList<>();
         ServersBoard board = (ServersBoard) eactual;
+        ServersHeuristicFunction Heur = new ServersHeuristicFunction();
+
         boolean generat = false;
         int sa, s, a1, a2;
         int npeticions = board.getSize();
@@ -30,9 +33,10 @@ public class ServersSuccessorFunctionSA implements SuccessorFunction {
             a2 = genera_aleatori(ssp.size());
             s = ssp.get(a2);
             if (sa != s) {      //comprovo que no siguin el mateix servidor
-                ServersBoard emodificat = new ServersBoard(board.getRequests(), board.getServers(), board.getBoard());
+                ServersBoard emodificat = new ServersBoard( board.getBoard(), board.getBoardtemps());
                 emodificat.moure_servidor(a1,s);
-                String S = ServersBoard.MOURE + " el servidor " + s + " a la petició" + a1;
+                double h = Heur.getHeuristicValue(emodificat);
+                String S = ServersBoard.MOURE + " el servidor " + s + " a la petició" + a1 + " Coste(" + h + ") ----> " + emodificat.toString();
                 successors.add(new Successor(S,emodificat));
                 generat = true;
             }

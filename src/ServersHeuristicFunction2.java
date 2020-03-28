@@ -54,25 +54,13 @@ public class ServersHeuristicFunction2 implements HeuristicFunction  {
         return var/(visitats.size()-1);
     }
 
-    /*private Pair< Boolean,Integer> Visitat(int idServidor) {
-        //busco si un servidor ja ha sigut visitat, en cas positiu retorno en quina posicio es troba
-        int i = 0;
-        System.out.println("ser: " + idServidor);
-        Pair<Boolean, Integer> pair = new Pair<>(false, -1);
-        while (i < num_servidors && !pair.getKey()){
-            if(servidors_visitats.get(i).getKey().equals(idServidor)){
-                pair = new Pair<>(true,i);
-            }
-            ++i;
-        }
-        return pair;
-    }*/
 
     private  boolean vist(int s){
         boolean trobat = false;
         int i = 0;
         while(i < visitats.size() && !trobat){
             if(visitats.get(i).equals(s)) trobat = true;
+            ++i;
         }
         return trobat;
     }
