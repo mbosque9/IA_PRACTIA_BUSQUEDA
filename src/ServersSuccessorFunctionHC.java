@@ -10,11 +10,12 @@ public class ServersSuccessorFunctionHC implements SuccessorFunction {
         ArrayList<Successor> successors = new ArrayList<>();
         ServersBoard board = (ServersBoard) eactual;
         ServersHeuristicFunction Heur = new ServersHeuristicFunction();
+        ServersHeuristicFunction Heur2 = new ServersHeuristicFunction();
+        double h2 = Heur.getHeuristicValue(board);
 
         Integer sa, s, t;
         int npeticions = board.getSize();
         ArrayList<Integer> ssp;
-
         for (int i = 0; i < npeticions; i++) {
             sa = board.getServidor(i);
             ssp = board.conjunt_servidors(i);
@@ -25,7 +26,7 @@ public class ServersSuccessorFunctionHC implements SuccessorFunction {
                     ServersBoard emodificat = new ServersBoard(board.getBoard(), board.getBoardtemps());
                     emodificat.moure_servidor(i,s, t);       //a la posició i vull posar el nou servidor s
                     double h = Heur.getHeuristicValue(emodificat);
-                    String S = ServersBoard.MOURE + " el servidor " + s + " a la petició " + i + " Coste(" + h + ")";
+                    String S = ServersBoard.MOURE + " el servidor " + s + " a la petició" + i + " Coste(" + h + ")";
                     successors.add(new Successor(S,emodificat));
                 }
             }
