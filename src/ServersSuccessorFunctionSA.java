@@ -30,7 +30,7 @@ public class ServersSuccessorFunctionSA implements SuccessorFunction {
             a2 = genera_aleatori(ssp.size());
             s = ssp.get(a2);
             if (sa != s) {      //comprovo que no siguin el mateix servidor
-                ServersBoard emodificat = board;
+                ServersBoard emodificat = new ServersBoard(board.getRequests(), board.getServers(), board.getBoard());
                 emodificat.moure_servidor(a1,s);
                 String S = ServersBoard.MOURE + " el servidor " + s + " a la petició" + a1;
                 successors.add(new Successor(S,emodificat));

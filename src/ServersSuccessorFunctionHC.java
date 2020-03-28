@@ -29,7 +29,7 @@ public class ServersSuccessorFunctionHC implements SuccessorFunction {
                 }
             }
         }
-        return successors;
+        return (successors);
     }
 
 }
