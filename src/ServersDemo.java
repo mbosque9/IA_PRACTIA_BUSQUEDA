@@ -1,15 +1,14 @@
-import java.util.Iterator;
-import java.util.List;
-import java.util.Properties;
-
 import IA.DistFS.Requests;
-import java.lang.Object;
 import IA.DistFS.Servers;
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
 import aima.search.informed.HillClimbingSearch;
 import aima.search.informed.SimulatedAnnealingSearch;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Properties;
 
 
 public class ServersDemo {
@@ -25,7 +24,7 @@ public class ServersDemo {
 
         // write your code here
         ServersBoard Serv =new ServersBoard(requests, servers);
-       // ServersHillClimbingSearch(Serv);
+        ServersHillClimbingSearch(Serv);
         ServersSimulatedAnnealingSearch(Serv);
     }
 

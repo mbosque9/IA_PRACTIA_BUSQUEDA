@@ -1,9 +1,7 @@
 import IA.DistFS.Requests;
 import IA.DistFS.Servers;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 public class ServersBoard {
 
@@ -23,7 +21,7 @@ public class ServersBoard {
         Integer tempo, tempo2, max, min_ser;
         Iterator itr;
         for(int i = 0; i < requests.size(); ++i) {
-            max = 50000000; //infinit
+            max = 500000000;
             min_ser = -1;
             prov = requests.getRequest(i);
             prov2 = servers.fileLocations(prov[1]);
@@ -119,6 +117,10 @@ public class ServersBoard {
 
     public int getServidor(int i) {
        return Board.get(i);
+    }
+
+    public int getTempsServidor(int i) {
+        return Boardtemps.get(i);
     }
 
     public ArrayList<Integer> getBoard() {
