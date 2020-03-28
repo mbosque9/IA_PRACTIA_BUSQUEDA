@@ -17,6 +17,9 @@ public class ServersSuccessorFunctionHC implements SuccessorFunction {
         Integer sa, s, t;
         int npeticions = board.getSize();
         ArrayList<Integer> ssp;
+        for (int a = 0; a < board.getSize(); a++) {
+            System.out.println("La peticio  "+ a + "  te assignat el servidor  " + board.getServidor(a));
+        }
 
         for (int i = 0; i < npeticions; i++) {
             sa = board.getServidor(i);
