@@ -1,8 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
-
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ServersSuccessorFunctionHC implements SuccessorFunction {
 
@@ -23,6 +23,9 @@ public class ServersSuccessorFunctionHC implements SuccessorFunction {
                 if (sa != s) {      //comprovo que no siguin el mateix servidor
                     ServersBoard emodificat = new ServersBoard(board.getBoard(), board.getBoardtemps());
                     emodificat.moure_servidor(i,s);       //a la posició i vull posar el nou servidor s
+                    for (int a = 0; a < emodificat.getSize(); a++) {
+                        System.out.println("La peticio  "+ a + "  te assignat el servidor  " + emodificat.getServidor(a));
+                    }
                     double h = Heur.getHeuristicValue(emodificat);
                     String S = ServersBoard.MOURE + " el servidor " + s + " a la petició" + i + " Coste(" + h + ") ----> " + emodificat.toString();
                     successors.add(new Successor(S,emodificat));

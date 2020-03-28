@@ -28,7 +28,9 @@ public class ServersSuccessorFunctionSA implements SuccessorFunction {
 
         while (!generat) {
             a1 = genera_aleatori(npeticions);        //indicara una peticio
+
             sa = board.getServidor(a1);              //servidor associat a la peticio
+            System.out.println(sa + "penlopeeeee " + a1);
             ssp = board.conjunt_servidors(a1);      //nomes em poden tocar servidors que tinguin el fitxer
             a2 = genera_aleatori(ssp.size());
             s = ssp.get(a2);
