@@ -14,11 +14,11 @@ import java.util.Properties;
 public class ServersDemo {
     public static void main(String[] args) throws Servers.WrongParametersException {
         int usuaris, max_peticions, seedr, servidors, min_replic, seeds;
-        usuaris = 2;
-        max_peticions = 5;
-        servidors = 7;
-        min_replic = 3;
-        seedr = seeds = 3;
+        usuaris = 5;
+        max_peticions = 1;
+        servidors = 4;
+        min_replic = 1;
+        seedr = seeds = 1;
         Requests requests =  new Requests(usuaris, max_peticions, seedr);
         Servers servers = new Servers(servidors, min_replic, seeds);
 
@@ -46,7 +46,7 @@ public class ServersDemo {
     private static void ServersHillClimbingSearch(ServersBoard Serv) {
         System.out.println("\n nTSP HillClimbing -->");
         try {
-            Problem problem =  new Problem(Serv, new ServersSuccessorFunctionHC(), new ServersGoalTest(), new ServersHeuristicFunction2());
+            Problem problem =  new Problem(Serv, new ServersSuccessorFunctionHC(), new ServersGoalTest(), new ServersHeuristicFunction());
             Search search =  new HillClimbingSearch();
             SearchAgent agent = new SearchAgent(problem,search);
 
