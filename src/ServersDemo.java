@@ -26,9 +26,6 @@ public class ServersDemo {
         ServersBoard Serv =new ServersBoard(requests, servers, servidors);
         ServersHillClimbingSearch(Serv);
         //ServersSimulatedAnnealingSearch(Serv);
-        long fin = System.currentTimeMillis();
-        double tiempo = (double) ((fin - inicio)/1000);
-        System.out.println(tiempo +" segundos");
     }
 
     private static void ServersSimulatedAnnealingSearch(ServersBoard Serv) {
