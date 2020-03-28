@@ -14,18 +14,18 @@ import java.util.Properties;
 public class ServersDemo {
     public static void main(String[] args) throws Servers.WrongParametersException {
         int usuaris, max_peticions, seedr, servidors, min_replic, seeds;
-        usuaris = 2;
-        max_peticions = 3;
-        servidors = 5;
-        min_replic = 2;
+        usuaris = 20;
+        max_peticions = 5;
+        servidors = 50;
+        min_replic = 7;
         seedr = seeds = 3;
         Requests requests =  new Requests(usuaris, max_peticions, seedr);
         Servers servers = new Servers(servidors, min_replic, seeds);
 
         // write your code here
         ServersBoard Serv =new ServersBoard(requests, servers);
-        //ServersHillClimbingSearch(Serv);
-        ServersSimulatedAnnealingSearch(Serv);
+        ServersHillClimbingSearch(Serv);
+        //ServersSimulatedAnnealingSearch(Serv);
     }
 
     private static void ServersSimulatedAnnealingSearch(ServersBoard Serv) {

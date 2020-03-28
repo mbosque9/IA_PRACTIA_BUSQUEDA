@@ -13,7 +13,7 @@ public class ServersBoard {
 
     public static String MOURE = "Moure";
 
-    public ServersBoard(Requests req, Servers serv) {
+    /*public ServersBoard(Requests req, Servers serv) {
         requests = req;
         servers = serv;
         int[] prov;
@@ -45,17 +45,14 @@ public class ServersBoard {
         for (int i = 0; i<requests.size(); ++i){
             System.out.println("fitxer: " + getFitxer(i) + " usuari: " + getUsuari(i));
         }
-
-
-
-    }
+    }*/
 
     public ServersBoard(final ArrayList<Integer> bor, ArrayList<Integer> temps) {
         this.Board = (ArrayList<Integer>) bor.clone();
         this.Boardtemps = (ArrayList<Integer>) temps.clone();
     }
 
-    /*public ServersBoard(Requests req, Servers serv) {
+    public ServersBoard(Requests req, Servers serv) {
         requests = req;
         servers = serv;
         int[] prov;
@@ -66,11 +63,15 @@ public class ServersBoard {
             prov2 = servers.fileLocations(prov[1]);
             itr = prov2.iterator();
             if (itr.hasNext()){
-                Board.add((Integer) itr.next());
+                Integer p = (Integer) itr.next();
+                Board.add(p);
+                Boardtemps.add(servers.tranmissionTime(p, getUsuari(i)));
             }
-
         }
-    }*/
+        for (int a = 0; a < Board.size(); a++) {
+            System.out.println("La peticio  "+ a + "  te assignat el servidor  " + Board.get(a));
+        }
+    }
 
     public ArrayList<Integer> conjunt_servidors(Integer p){   //fet
         ArrayList<Integer> posibles_servidors = new  ArrayList<Integer>();
@@ -79,8 +80,17 @@ public class ServersBoard {
         return posibles_servidors;
     }
 
-    public  void moure_servidor(int i, int s) {  //fet
+    public  void moure_servidor(Integer i, Integer s, Integer t) {  //fet
         Board.set(i,s);
+        Boardtemps.set(i,t);
+    }
+
+    public  void moure_servidor(Integer i, Integer s) {  //forrraaa
+        Board.set(i, s);
+    }
+
+    public Integer getTemps(int i, Integer p) {
+             return servers.tranmissionTime(p, getUsuari(i));
     }
 
     public Requests getRequests() {     //fet
