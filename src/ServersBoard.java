@@ -109,6 +109,7 @@ public class ServersBoard {
 
 
     public int[] getRequest(int i) {
+        System.out.println("i: " + i);
         return requests.getRequest(i);
     }
 
