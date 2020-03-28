@@ -6,8 +6,8 @@ import java.util.*;
 public class ServersBoard {
 
 
-    private Requests requests;
-    private Servers servers;
+    private static Requests requests;
+    private static Servers servers;
     private  ArrayList<Integer> Board = new ArrayList<Integer>();
     private  ArrayList<Integer> Boardtemps = new ArrayList<Integer>();
 
