@@ -10,8 +10,8 @@ public class ServersBoard {
 
     private Requests requests;
     private Servers servers;
-    private final ArrayList<Integer> Board = new ArrayList<Integer>();
-    private final ArrayList<Integer> Boardtemps = new ArrayList<Integer>();
+    private  ArrayList<Integer> Board = new ArrayList<Integer>();
+    private  ArrayList<Integer> Boardtemps = new ArrayList<Integer>();
 
     public static String MOURE = "Moure";
 
@@ -49,8 +49,8 @@ public class ServersBoard {
     }
 
     public ServersBoard(final ArrayList<Integer> bor, ArrayList<Integer> temps) {
-        this.Board = ;
-        this.Boardtemps =
+        this.Board = (ArrayList<Integer>) bor.clone();
+        this.Boardtemps = (ArrayList<Integer>) temps.clone();
     }
 
     /*public ServersBoard(Requests req, Servers serv) {

@@ -21,7 +21,7 @@ public class ServersSuccessorFunctionHC implements SuccessorFunction {
             for (int j = 0; j < ssp.size(); j++) {      //recorro cada servidor que te el fitxer
                 s = ssp.get(j);
                 if (sa != s) {      //comprovo que no siguin el mateix servidor
-                    ServersBoard emodificat = new ServersBoard(board.getBoard());
+                    ServersBoard emodificat = new ServersBoard(board.getBoard(), board.getBoardtemps());
                     emodificat.moure_servidor(i,s);       //a la posició i vull posar el nou servidor s
                     double h = Heur.getHeuristicValue(emodificat);
                     String S = ServersBoard.MOURE + " el servidor " + s + " a la petició" + i + " Coste(" + h + ") ----> " + emodificat.toString();
