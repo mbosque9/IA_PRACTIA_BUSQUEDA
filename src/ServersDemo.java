@@ -24,7 +24,7 @@ public class ServersDemo {
 
         // write your code here
         ServersBoard Serv =new ServersBoard(requests, servers);
-        ServersHillClimbingSearch(Serv);
+        //ServersHillClimbingSearch(Serv);
         ServersSimulatedAnnealingSearch(Serv);
     }
 
