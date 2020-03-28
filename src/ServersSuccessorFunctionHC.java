@@ -25,7 +25,7 @@ public class ServersSuccessorFunctionHC implements SuccessorFunction {
             for (int j = 0; j < ssp.size(); j++) {      //recorro cada servidor que te el fitxer
                 s = ssp.get(j);
                 if (sa != s) {      //comprovo que no siguin el mateix servidor
-                    ServersBoard emodificat = new ServersBoard(board.getBoard());
+                    ServersBoard emodificat = new ServersBoard(board.getBoard(), board.getBoardtemps());
 
                     System.out.println("\n\n-----------------------------------------------------------------------------------");
                     System.out.println("\nL'estat emodificat es (hauria de ser el actual):");

@@ -41,8 +41,9 @@ public class ServersBoard {
         }
     }
 
-    public ServersBoard(final ArrayList<Integer> bor) {
+    public ServersBoard(final ArrayList<Integer> bor, ArrayList<Integer> temps) {
         this.Board = ;
+        this.Boardtemps =
     }
 
 
