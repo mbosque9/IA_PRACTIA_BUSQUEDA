@@ -18,21 +18,24 @@ public class ServersDemo {
         max_peticions = 5;
         servidors = 50;
         min_replic = 5;
-        seedr = seeds = 3;
+        seedr = seeds = 10;
         Requests requests =  new Requests(usuaris, max_peticions, seedr);
         Servers servers = new Servers(servidors, min_replic, seeds);
 
         // write your code here
-        ServersBoard Serv =new ServersBoard(requests, servers);
-        //ServersHillClimbingSearch(Serv);
-        ServersSimulatedAnnealingSearch(Serv);
+        ServersBoard Serv =new ServersBoard(requests, servers, servidors);
+        ServersHillClimbingSearch(Serv);
+        //ServersSimulatedAnnealingSearch(Serv);
+        long fin = System.currentTimeMillis();
+        double tiempo = (double) ((fin - inicio)/1000);
+        System.out.println(tiempo +" segundos");
     }
 
     private static void ServersSimulatedAnnealingSearch(ServersBoard Serv) {
         try {
             System.out.println("\n TSP Simulated Annealing");
             Problem problem =  new Problem(Serv, new ServersSuccessorFunctionSA(), new ServersGoalTest(), new ServersHeuristicFunction());
-            Search search =  new SimulatedAnnealingSearch();
+            Search search =  new SimulatedAnnealingSearch(2000,100,5,0.001);
             SearchAgent agent = new SearchAgent(problem,search);
 
             System.out.println();
@@ -71,7 +74,7 @@ public class ServersDemo {
     private static void printActions(List actions) {
         for (int i = 0; i < actions.size(); i++) {
             String action =  actions.get(i).toString();
-            System.out.println(actions);
+            System.out.println(action);
         }
 
     }
