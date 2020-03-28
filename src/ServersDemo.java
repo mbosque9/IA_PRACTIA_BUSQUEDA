@@ -14,11 +14,11 @@ import java.util.Properties;
 public class ServersDemo {
     public static void main(String[] args) throws Servers.WrongParametersException {
         int usuaris, max_peticions, seedr, servidors, min_replic, seeds;
-        usuaris = 20;
-        max_peticions = 5;
-        servidors = 50;
-        min_replic = 7;
-        seedr = seeds = 3;
+        usuaris = 5;
+        max_peticions = 1;
+        servidors = 4;
+        min_replic = 1;
+        seedr = seeds = 1;
         Requests requests =  new Requests(usuaris, max_peticions, seedr);
         Servers servers = new Servers(servidors, min_replic, seeds);
 
