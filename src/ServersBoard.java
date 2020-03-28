@@ -75,8 +75,7 @@ public class ServersBoard {
 
     public ArrayList<Integer> conjunt_servidors(Integer p){   //fet
         ArrayList<Integer> posibles_servidors = new  ArrayList<Integer>();
-        int[] peticio = requests.getRequest(p);
-        Set<Integer> servidors = servers.fileLocations(peticio[1]);
+        Set<Integer> servidors = servers.fileLocations(getFitxer(p));
         posibles_servidors.addAll(servidors);
         return posibles_servidors;
     }
