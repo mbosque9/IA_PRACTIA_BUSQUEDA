@@ -35,10 +35,15 @@ public class ServersBoard {
             }
             Board.add(min_ser);
         }
-        System.out.println("mida b: " + Board.size());
+        System.out.println("mida bard: " + Board.size());
         for (int a = 0; a < Board.size(); a++) {
             System.out.println("La peticio  "+ a + "  te assignat el servidor  " + Board.get(a));
         }
+        System.out.println("requests: ");
+        for (int i = 0; i<requests.size(); ++i){
+            System.out.println("fitxer: " + getFitxer(i) + " usuari: " + getUsuari(i));
+        }
+
     }
 
     public ServersBoard(Requests req, Servers serv, ArrayList<Integer> bor) {
@@ -93,6 +98,12 @@ public class ServersBoard {
         int[] peticio = requests.getRequest(i);
         return peticio[1];
     }
+    public int getUsuari(int i) {     //fet
+        //donat la peticio numero i vull saber el fitxer associat
+        int[] peticio = requests.getRequest(i);
+        return peticio[0];
+    }
+
 
     public int[] getRequest(int i) {
         return requests.getRequest(i);

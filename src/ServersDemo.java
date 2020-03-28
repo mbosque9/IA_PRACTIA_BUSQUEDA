@@ -15,8 +15,8 @@ import aima.search.informed.SimulatedAnnealingSearch;
 public class ServersDemo {
     public static void main(String[] args) throws Servers.WrongParametersException {
         int usuaris, max_peticions, seedr, servidors, min_replic, seeds;
-        usuaris = 3;
-        max_peticions = 5;
+        usuaris = 2;
+        max_peticions = 3;
         servidors = 5;
         min_replic = 1;
         seedr = seeds = 3;
@@ -25,7 +25,7 @@ public class ServersDemo {
 
         // write your code here
         ServersBoard Serv =new ServersBoard(requests, servers);
-        ServersHillClimbingSearch(Serv);
+       // ServersHillClimbingSearch(Serv);
         ServersSimulatedAnnealingSearch(Serv);
     }
 
