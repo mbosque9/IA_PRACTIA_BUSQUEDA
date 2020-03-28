@@ -1,7 +1,9 @@
 import IA.DistFS.Requests;
 import IA.DistFS.Servers;
 
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -46,10 +48,8 @@ public class ServersBoard {
 
     }
 
-    public ServersBoard(Requests req, Servers serv, ArrayList<Integer> bor) {
-        requests = req;
-        servers = serv;
-        Board = bor;
+    public ServersBoard(final ArrayList<Integer> bor) {
+        Board = (ArrayList<Integer>) bor.clone();
     }
 
     /*public ServersBoard(Requests req, Servers serv) {
