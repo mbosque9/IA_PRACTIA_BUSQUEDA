@@ -14,18 +14,18 @@ import java.util.Properties;
 public class ServersDemo {
     public static void main(String[] args) throws Servers.WrongParametersException {
         int usuaris, max_peticions, seedr, servidors, min_replic, seeds;
-        usuaris = 20;
+        usuaris = 2;
         max_peticions = 5;
-        servidors = 50;
-        min_replic = 7;
+        servidors = 7;
+        min_replic = 3;
         seedr = seeds = 3;
         Requests requests =  new Requests(usuaris, max_peticions, seedr);
         Servers servers = new Servers(servidors, min_replic, seeds);
 
         // write your code here
-        ServersBoard Serv =new ServersBoard(requests, servers);
-        //ServersHillClimbingSearch(Serv);
-        ServersSimulatedAnnealingSearch(Serv);
+        ServersBoard Serv =new ServersBoard(requests, servers, servidors);
+        ServersHillClimbingSearch(Serv);
+       // ServersSimulatedAnnealingSearch(Serv);
     }
 
     private static void ServersSimulatedAnnealingSearch(ServersBoard Serv) {
@@ -46,7 +46,7 @@ public class ServersDemo {
     private static void ServersHillClimbingSearch(ServersBoard Serv) {
         System.out.println("\n nTSP HillClimbing -->");
         try {
-            Problem problem =  new Problem(Serv, new ServersSuccessorFunctionHC(), new ServersGoalTest(), new ServersHeuristicFunction());
+            Problem problem =  new Problem(Serv, new ServersSuccessorFunctionHC(), new ServersGoalTest(), new ServersHeuristicFunction2());
             Search search =  new HillClimbingSearch();
             SearchAgent agent = new SearchAgent(problem,search);
 

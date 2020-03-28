@@ -5,44 +5,56 @@ import java.util.ArrayList;
 
 public class ServersHeuristicFunction2 implements HeuristicFunction  {
 
-    double suma_temps = 0;
+    double suma_temps;
     double mitjana;
-    int num_fitxer;
-    int num_servidors = 0;
+    double num_fitxer;
+    double num_servidors;
+    double servidorsTotals;
     double variancia;
     //vector de servidors trobats al estat amb el numero de cops que surt
-    ArrayList<Integer> visitats = new ArrayList<Integer>();
-    ArrayList<Integer> cops = new ArrayList<Integer>();
+    ArrayList<Integer> visitats ;
+    ArrayList<Integer> cops;
 
     public double getHeuristicValue(Object state) {
         ServersBoard board=(ServersBoard)state;
+        servidorsTotals = board.getNumServidors();
         num_fitxer = board.getSize();
         num_servidors = 0;
-        for(int i = 0; i < board.getSize(); ++i) {
+        visitats = new ArrayList<>();
+        cops = new ArrayList<>();
+        suma_temps = 0;
+
+        for(int i = 0; i < num_fitxer; ++i) {
             int idServidor = board.getServidor(i);
             if (i== 0){
                 visitats.add(idServidor);
                 cops.add(1);
             }
-
-            suma_temps += board.getTransmissionTime(idServidor,board.getFitxer(i));
-            //si un servidor no ha sigut visitat encara, lafageixo a visitats amb 1 cop visitat
-            if(!vist(idServidor)) {
-                visitats.add(idServidor);
-                cops.add(1);
-            }
-            //si ja ha sigut visitat, sumo 1 als cops que ho ha estat
-           else{
-                int pos_servidor = pos(idServidor);
-                int num_cops = cops.get(pos_servidor);
-                cops.set(pos_servidor,num_cops++);
+            else {
+                suma_temps += board.getTransmissionTime(idServidor, board.getFitxer(i));
+                //si un servidor no ha sigut visitat encara, lafageixo a visitats amb 1 cop visitat
+                if (!(vist(idServidor))) {
+                    visitats.add(idServidor);
+                    cops.add(1);
+                }
+                //si ja ha sigut visitat, sumo 1 als cops que ho ha estat
+                else {
+                    int pos_servidor = pos(idServidor);
+                    int num_cops = cops.get(pos_servidor);
+                    cops.set(pos_servidor, ++num_cops);
+                }
             }
         }
+
+
         num_servidors = visitats.size();
-        mitjana = num_fitxer/num_servidors;
+        mitjana = num_fitxer/servidorsTotals;
         variancia = calcularVariancia();
 
-        return suma_temps + (variancia*100*board.getSize());
+        double h = suma_temps + (variancia*100*board.getSize());
+        System.out.println("h: " + h);
+        return h;
+
     }
 
     private double calcularVariancia() {
@@ -51,7 +63,7 @@ public class ServersHeuristicFunction2 implements HeuristicFunction  {
             int num_cops = cops.get(i);
             var += Math.pow(num_cops - mitjana,2);
         }
-        return var/(visitats.size()-1);
+        return var/(visitats.size());
     }
 
 

@@ -8,6 +8,7 @@ public class ServersBoard {
 
     private static Requests requests;
     private static Servers servers;
+    private static int num_servidors;
     private  ArrayList<Integer> Board = new ArrayList<Integer>();
     private  ArrayList<Integer> Boardtemps = new ArrayList<Integer>();
 
@@ -52,9 +53,10 @@ public class ServersBoard {
         this.Boardtemps = (ArrayList<Integer>) temps.clone();
     }
 
-    public ServersBoard(Requests req, Servers serv) {
+    public ServersBoard(Requests req, Servers serv, int servidors) {
         requests = req;
         servers = serv;
+        num_servidors = servidors;
         int[] prov;
         Set<Integer> prov2;
         Iterator itr;
@@ -68,6 +70,9 @@ public class ServersBoard {
                 Boardtemps.add(servers.tranmissionTime(p, getUsuari(i)));
             }
         }
+        imprimirBoard();
+        System.out.println("------------------------------");
+        imprimirRequests();
     }
 
     public ArrayList<Integer> conjunt_servidors(Integer p){   //fet
@@ -88,14 +93,6 @@ public class ServersBoard {
 
     public Integer getTemps(int i, Integer p) {
              return servers.tranmissionTime(p, getUsuari(i));
-    }
-
-    public Requests getRequests() {     //fet
-        return requests;
-    }
-
-    public Servers getServers(){        //fet
-        return servers;
     }
 
     public int getSize(){           //fet
@@ -137,6 +134,22 @@ public class ServersBoard {
 
     public ArrayList<Integer> getBoardtemps() {
         return (ArrayList<Integer>) Boardtemps.clone();
+    }
+
+    public void imprimirBoard(){
+        for(int i = 0; i < Board.size(); ++i){
+            System.out.println("peticio: " + i + " Servidor: " + Board.get(i));
+        }
+    }
+
+    private void imprimirRequests() {
+        for(int i = 0; i < requests.size(); ++i){
+            System.out.println("fitxer: " + getFitxer(i) + " Usuari: " + getUsuari(i));
+        }
+    }
+
+    public int getNumServidors(){
+        return num_servidors;
     }
 
 }
