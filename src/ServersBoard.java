@@ -20,9 +20,11 @@ public class ServersBoard {
         servers = serv;
         int[] prov;
         Set<Integer> prov2;
-        Integer tempo, tempo2, max = 501, min_ser = -1;
+        Integer tempo, tempo2, max, min_ser;
         Iterator itr;
         for(int i = 0; i < requests.size(); ++i) {
+            max = 50000000; //infinit
+            min_ser = -1;
             prov = requests.getRequest(i);
             prov2 = servers.fileLocations(prov[1]);
             itr = prov2.iterator();
