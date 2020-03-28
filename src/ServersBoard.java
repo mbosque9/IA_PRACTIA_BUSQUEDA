@@ -68,9 +68,6 @@ public class ServersBoard {
                 Boardtemps.add(servers.tranmissionTime(p, getUsuari(i)));
             }
         }
-        for (int a = 0; a < Board.size(); a++) {
-            System.out.println("La peticio  "+ a + "  te assignat el servidor  " + Board.get(a));
-        }
     }
 
     public ArrayList<Integer> conjunt_servidors(Integer p){   //fet
