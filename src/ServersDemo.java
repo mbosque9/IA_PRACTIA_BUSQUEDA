@@ -14,7 +14,7 @@ import java.util.Properties;
 public class ServersDemo {
     public static void main(String[] args) throws Servers.WrongParametersException {
 
-        //for(int i = 1; i< 52; ++i) {
+        //for(int i = 1; i< 12; ++i) {
             long inicio = System.currentTimeMillis();
             int usuaris, max_peticions, seedr, servidors, min_replic, seeds;
             usuaris = 200;
@@ -28,7 +28,7 @@ public class ServersDemo {
             // write your code here
             ServersBoard Serv = new ServersBoard(requests, servers, servidors);
             ServersHillClimbingSearch(Serv);
-            ServersSimulatedAnnealingSearch(Serv);
+            //ServersSimulatedAnnealingSearch(Serv);
             long fin = System.currentTimeMillis();
             double tiempo = (double) ((fin - inicio));
             System.out.println(tiempo + " mili segundos");
