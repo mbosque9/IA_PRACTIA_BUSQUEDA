@@ -17,9 +17,9 @@ public class ServersDemo {
         int usuaris, max_peticions, seedr, servidors, min_replic, seeds;
         usuaris = 200;
         max_peticions = 5;
-        servidors = 50;
+        servidors = 200;
         min_replic = 5;
-        seedr = seeds = 10;
+        seedr = seeds = 2;
         Requests requests =  new Requests(usuaris, max_peticions, seedr);
         Servers servers = new Servers(servidors, min_replic, seeds);
 
@@ -28,8 +28,8 @@ public class ServersDemo {
         ServersHillClimbingSearch(Serv);
         //ServersSimulatedAnnealingSearch(Serv);
         long fin = System.currentTimeMillis();
-        double tiempo = (double) ((fin - inicio)/1000);
-        System.out.println(tiempo +" segundos");
+        double tiempo = (double) ((fin - inicio));
+        System.out.println(tiempo +" mili segundos");
     }
 
     private static void ServersSimulatedAnnealingSearch(ServersBoard Serv) {
