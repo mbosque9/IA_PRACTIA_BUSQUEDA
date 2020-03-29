@@ -1,5 +1,4 @@
 import aima.search.framework.HeuristicFunction;
-import javafx.util.Pair;
 
 import java.util.ArrayList;
 
@@ -52,6 +51,7 @@ public class ServersHeuristicFunction2 implements HeuristicFunction  {
         variancia = calcularVariancia();
 
         double h = suma_temps + (variancia*100*board.getSize());
+        System.out.println("pene " + h);
         return h;
 
     }
