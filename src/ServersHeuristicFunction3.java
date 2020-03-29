@@ -1,6 +1,6 @@
 import aima.search.framework.HeuristicFunction;
 
-public class ServerHeuristicFunction3 implements HeuristicFunction {
+public class ServersHeuristicFunction3 implements HeuristicFunction {
 
     public double getHeuristicValue(Object state) {
         ServersBoard board = (ServersBoard) state;
