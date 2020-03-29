@@ -11,6 +11,7 @@ public class ServersBoard {
     private static int num_servidors;
     private  ArrayList<Integer> Board = new ArrayList<Integer>();
     private  ArrayList<Integer> Boardtemps = new ArrayList<Integer>();
+    private Integer temps;
 
     public static String MOURE = "Moure";
 
@@ -19,6 +20,7 @@ public class ServersBoard {
         requests = req;
         servers = serv;
         num_servidors = servidors;
+        temps = 0;
         Set<Integer> prov2;
         Integer tempo, tempo2, max, min_ser;
         Iterator itr;
@@ -35,14 +37,16 @@ public class ServersBoard {
                     min_ser = tempo;
                 }
             }
+            temps = temps + max;
             Board.add(min_ser);
             Boardtemps.add(max);
         }
     }*/
 
-    public ServersBoard(final ArrayList<Integer> bor, ArrayList<Integer> temps) {
+    public ServersBoard(final ArrayList<Integer> bor, ArrayList<Integer> temps, Integer t) {
         this.Board = (ArrayList<Integer>) bor.clone();
         this.Boardtemps = (ArrayList<Integer>) temps.clone();
+        this.temps = t;
     }
 
     //EL PRIMER
@@ -50,6 +54,7 @@ public class ServersBoard {
         requests = req;
         servers = serv;
         num_servidors = servidors;
+        temps = 0;
         Set<Integer> prov2;
         Iterator itr;
         for(int i = 0; i < requests.size(); ++i) {
@@ -59,6 +64,7 @@ public class ServersBoard {
                 Integer p = (Integer) itr.next();
                 Board.add(p);
                 Boardtemps.add(servers.tranmissionTime(p, getUsuari(i)));
+                temps = temps + servers.tranmissionTime(p, getUsuari(i));
             }
         }
     }
@@ -100,6 +106,7 @@ public class ServersBoard {
         requests = req;
         servers = serv;
         num_servidors = servidors;
+        temps = 0;
         Integer p;
        Random myRandom = new Random();
         for (int i = 0; i < requests.size(); ++i) {
@@ -107,6 +114,7 @@ public class ServersBoard {
             p = myRandom.nextInt(x.size());
             Board.add(x.get(p));
             Boardtemps.add(servers.tranmissionTime(x.get(p), getUsuari(i)));
+            temps = temps + servers.tranmissionTime(x.get(p), getUsuari(i));
         }
     }*/
 
@@ -118,8 +126,10 @@ public class ServersBoard {
     }
 
     public  void moure_servidor(Integer i, Integer s, Integer t) {  //fet
+        temps = temps - Boardtemps.get(i);
         Board.set(i,s);
         Boardtemps.set(i,t);
+        temps = temps + t;
     }
 
     public  void moure_servidor(Integer i, Integer s) {  //forrraaa
@@ -197,7 +207,17 @@ public class ServersBoard {
     }
 
     public void intercanviar(Integer sa, int j, Integer s, int i) {
-       Board.set(j, sa);
+        temps = temps - Boardtemps.get(i);
+        temps = temps - Boardtemps.get(j);
+        Board.set(j, sa);
+        Boardtemps.set(j, servers.tranmissionTime(sa, getUsuari(j)));
         Board.set(i, s);
+        Boardtemps.set(i, servers.tranmissionTime(s, getUsuari(i)));
+        temps = temps + Boardtemps.get(i);
+        temps = temps + Boardtemps.get(j);
+    }
+
+    public Integer getTempstotal() {
+        return temps;
     }
 }

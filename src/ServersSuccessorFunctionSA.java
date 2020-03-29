@@ -41,14 +41,14 @@ public class ServersSuccessorFunctionSA implements SuccessorFunction {
             System.out.println("SERVIDOR S2: " + s);
 
             if (sa != s) {  //comprovo que no sigui el mateix servidor
-                ServersBoard emodificat = new ServersBoard(board.getBoard(), board.getBoardtemps());
+                ServersBoard emodificat = new ServersBoard(board.getBoard(), board.getBoardtemps(), board.getTempstotal());
                 emodificat.moure_servidor(a1, s);
                 for(int i= 0; i < emodificat.getSize();++i){
                     System.out.println("pet: " + i +" serv: "+  emodificat.getServidor(i));
                 }
 
                 double h = Heur.getHeuristicValue(emodificat);
-                String S = ServersBoard.MOURE + " el servidor " + s + " a la petició" + a1 + " Coste(" + h + ")" ;
+                String S = ServersBoard.MOURE + " el servidor " + s + " a la petició" + a1 + " Heuristica: " + h3 + ", temps: " + board.getTempstotal() ;
                 successors.add(new Successor(S, emodificat));
                 generat = true;
             }
@@ -71,10 +71,10 @@ public class ServersSuccessorFunctionSA implements SuccessorFunction {
             s = board.getServidor(a1);
             sa = board.getServidor(a2);
             if (a1 != a2 && s!= sa && board.comprova(a1, sa) && board.comprova(a2,s)) {
-                ServersBoard emodificat = new ServersBoard(board.getBoard(), board.getBoardtemps());
+                ServersBoard emodificat = new ServersBoard(board.getBoard(), board.getBoardtemps(), board.getTempstotal());
                 emodificat.intercanviar(s, a2, sa, a1);
                 double h = Heur.getHeuristicValue(emodificat);
-                String S = ServersBoard.MOURE + " el servidor " + s + " a la petició " + a2 + " i " + ServersBoard.MOURE + " el servidor " + sa + " a la petició " + a1 + " Coste (" + h + ")";
+                String S = ServersBoard.MOURE + " el servidor " + s + " a la petició " + a2 + " i " + ServersBoard.MOURE + " el servidor " + sa + " a la petició " + a1 + " Heuristica: " + h + ", temps: " + board.getTempstotal();
                 successors.add(new Successor(S, emodificat));
                 generat = true;
             }

@@ -14,14 +14,14 @@ import java.util.Properties;
 public class ServersDemo {
     public static void main(String[] args) throws Servers.WrongParametersException {
 
-        for(int i = 1; i< 12; ++i) {
+        //for(int i = 1; i< 12; ++i) {
             long inicio = System.currentTimeMillis();
             int usuaris, max_peticions, seedr, servidors, min_replic, seeds;
             usuaris = 200;
             max_peticions = 5;
-            servidors = 1000;
+            servidors = 50;
             min_replic = 5;
-            seedr = seeds = i;
+            seedr = seeds = 1;
             Requests requests = new Requests(usuaris, max_peticions, seedr);
             Servers servers = new Servers(servidors, min_replic, seeds);
 
@@ -32,7 +32,7 @@ public class ServersDemo {
             long fin = System.currentTimeMillis();
             double tiempo = (double) ((fin - inicio));
             System.out.println(tiempo + " mili segundos");
-        }
+        //}
     }
 
     private static void ServersSimulatedAnnealingSearch(ServersBoard Serv) {
