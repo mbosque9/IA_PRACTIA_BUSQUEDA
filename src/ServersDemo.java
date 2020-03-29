@@ -27,7 +27,7 @@ public class ServersDemo {
 
             // write your code here
             ServersBoard Serv = new ServersBoard(requests, servers, servidors);
-            //ServersHillClimbingSearch(Serv);
+            ServersHillClimbingSearch(Serv);
             ServersSimulatedAnnealingSearch(Serv);
             long fin = System.currentTimeMillis();
             double tiempo = (double) ((fin - inicio));
@@ -52,14 +52,15 @@ public class ServersDemo {
     }
 
     private static void ServersHillClimbingSearch(ServersBoard Serv) {
-        //System.out.println("\n nTSP HillClimbing -->");
+        System.out.println("\n nTSP HillClimbing -->");
         try {
             Problem problem =  new Problem(Serv, new ServersSuccessorFunctionHC(), new ServersGoalTest(), new ServersHeuristicFunction());
             Search search =  new HillClimbingSearch();
             SearchAgent agent = new SearchAgent(problem,search);
 
             System.out.println();
-            printActions(agent.getActions());
+            ServersBoard e = (ServersBoard) search.getGoalState();
+            System.out.println(e.getTempstotal());
             printInstrumentation(agent.getInstrumentation());
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,11 +77,4 @@ public class ServersDemo {
 
     }
 
-    private static void printActions(List actions) {
-        for (int i = 0; i < actions.size(); i++) {
-            String action =  actions.get(i).toString();
-            System.out.println(action);
-        }
-
-    }
 }
