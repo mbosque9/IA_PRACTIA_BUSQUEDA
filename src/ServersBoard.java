@@ -46,7 +46,7 @@ public class ServersBoard {
     }
 
     //EL PRIMER
-    /*public ServersBoard(Requests req, Servers serv, int servidors) {
+    public ServersBoard(Requests req, Servers serv, int servidors) {
         requests = req;
         servers = serv;
         num_servidors = servidors;
@@ -61,7 +61,7 @@ public class ServersBoard {
                 Boardtemps.add(servers.tranmissionTime(p, getUsuari(i)));
             }
         }
-    }*/
+    }
 
     //EL SEGON MES RAPID (no acabat)
     /*public ServersBoard(Requests req, Servers serv, int servidors) {
@@ -96,7 +96,7 @@ public class ServersBoard {
     }*/
 
     //ALEATORI
-   public ServersBoard(Requests req, Servers serv, int servidors) {
+   /*public ServersBoard(Requests req, Servers serv, int servidors) {
         requests = req;
         servers = serv;
         num_servidors = servidors;
@@ -108,7 +108,7 @@ public class ServersBoard {
             Board.add(x.get(p));
             Boardtemps.add(servers.tranmissionTime(x.get(p), getUsuari(i)));
         }
-    }
+    }*/
 
     public ArrayList<Integer> conjunt_servidors(Integer p){   //fet
         ArrayList<Integer> posibles_servidors = new  ArrayList<Integer>();
