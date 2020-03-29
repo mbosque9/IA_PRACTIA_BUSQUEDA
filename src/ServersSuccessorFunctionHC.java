@@ -6,11 +6,12 @@ import java.util.List;
 
 public class ServersSuccessorFunctionHC implements SuccessorFunction {
 
-    /*public List<Successor> getSuccessors(Object eactual) {
+    public List<Successor> getSuccessors(Object eactual) {
         ArrayList<Successor> successors = new ArrayList<>();
         ServersBoard board = (ServersBoard) eactual;
         ServersHeuristicFunction Heur = new ServersHeuristicFunction();
         ServersHeuristicFunction2 Heur2 = new ServersHeuristicFunction2();
+        ServersHeuristicFunction3 Heur3 = new ServersHeuristicFunction3();
 
 
         Integer sa, s, t;
@@ -25,17 +26,20 @@ public class ServersSuccessorFunctionHC implements SuccessorFunction {
                 if (sa != s) {      //comprovo que no siguin el mateix servidor
                     ServersBoard emodificat = new ServersBoard(board.getBoard(), board.getBoardtemps());
                     emodificat.moure_servidor(i,s, t);       //a la posició i vull posar el nou servidor s
-                    double h = Heur.getHeuristicValue(emodificat);
+                    //double h = Heur.getHeuristicValue(emodificat);
                     //double h2 = Heur2.getHeuristicValue(emodificat);
-                    String S = ServersBoard.MOURE + " el servidor " + s + " a la petició " + i + " Coste (" + h + ")";
+                    double h3 = Heur3.getHeuristicValue(emodificat);
+
+                    String S = ServersBoard.MOURE + " el servidor " + s + " a la petició " + i + " Coste (" + h3 + ")";
                     successors.add(new Successor(S,emodificat));
                 }
             }
         }
         return (successors);
-    }*/
+    }
 
-    public List<Successor> getSuccessors(Object eactual) {
+    //inercanviar
+   /* public List<Successor> getSuccessors(Object eactual) {
         ArrayList<Successor> successors = new ArrayList<>();
         ServersBoard board = (ServersBoard) eactual;
         ServersHeuristicFunction Heur = new ServersHeuristicFunction();
@@ -60,5 +64,5 @@ public class ServersSuccessorFunctionHC implements SuccessorFunction {
             }
         }
         return (successors);
-    }
+    }*/
 }
