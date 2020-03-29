@@ -14,14 +14,14 @@ import java.util.Properties;
 public class ServersDemo {
     public static void main(String[] args) throws Servers.WrongParametersException {
 
-        //for(int i = 1; i< 12; ++i) {
+        //for(int i = 0; i< 10; ++i) {
             long inicio = System.currentTimeMillis();
             int usuaris, max_peticions, seedr, servidors, min_replic, seeds;
             usuaris = 200;
             max_peticions = 5;
             servidors = 50;
             min_replic = 5;
-            seedr = seeds = 2;
+            seedr = seeds = 56;
             Requests requests = new Requests(usuaris, max_peticions, seedr);
             Servers servers = new Servers(servidors, min_replic, seeds);
 
@@ -31,8 +31,9 @@ public class ServersDemo {
             //ServersSimulatedAnnealingSearch(Serv);
             long fin = System.currentTimeMillis();
             double tiempo = (double) ((fin - inicio));
+            //System.out.println("seed: " + i);
             System.out.println(tiempo + " mili segundos");
-        //}
+
     }
 
     private static void ServersSimulatedAnnealingSearch(ServersBoard Serv) {
@@ -53,7 +54,7 @@ public class ServersDemo {
     private static void ServersHillClimbingSearch(ServersBoard Serv) {
         System.out.println("\n nTSP HillClimbing -->");
         try {
-            Problem problem =  new Problem(Serv, new ServersSuccessorFunctionHC(), new ServersGoalTest(), new ServersHeuristicFunction());
+            Problem problem =  new Problem(Serv, new ServersSuccessorFunctionHC(), new ServersGoalTest(), new ServersHeuristicFunction2());
             Search search =  new HillClimbingSearch();
             SearchAgent agent = new SearchAgent(problem,search);
 

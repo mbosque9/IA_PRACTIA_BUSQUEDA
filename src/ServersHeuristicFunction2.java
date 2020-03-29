@@ -1,7 +1,4 @@
 import aima.search.framework.HeuristicFunction;
-import javafx.util.Pair;
-
-import java.util.ArrayList;
 
 public class ServersHeuristicFunction2 implements HeuristicFunction  {
 
@@ -24,11 +21,10 @@ public class ServersHeuristicFunction2 implements HeuristicFunction  {
         for(int i = 0; i < num_fitxer; ++i) {
             ++servidors[board.getServidor(i)];
         }
-
         suma_temps = board.getTempstotal();
         mitjana = num_fitxer/servidorsTotals;
         variancia = calcularVariancia();
-        h = suma_temps;
+        h = suma_temps + (variancia * 2 * board.getSize());
         return h;
 
     }

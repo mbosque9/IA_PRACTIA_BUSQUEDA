@@ -1,7 +1,5 @@
 import aima.search.framework.HeuristicFunction;
 
-import aima.search.framework.HeuristicFunction;
-
 public class ServersHeuristicFunction3 implements HeuristicFunction {
 
         public double getHeuristicValue(Object state) {
@@ -10,7 +8,8 @@ public class ServersHeuristicFunction3 implements HeuristicFunction {
             ServersHeuristicFunction2 Heur2 = new ServersHeuristicFunction2();
             double hh = Heur2.getHeuristicValue(board);
             double h = Heur.getHeuristicValue(board);
-            return (h + hh);
+            System.out.println((hh/1000) + " eee " + h);
+            return (h + (hh*10));
         }
 
 }
