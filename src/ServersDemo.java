@@ -21,7 +21,7 @@ public class ServersDemo {
             max_peticions = 5;
             servidors = 50;
             min_replic = 5;
-            seedr = seeds = 31;
+            seedr = seeds = 2;
             Requests requests = new Requests(usuaris, max_peticions, seedr);
             Servers servers = new Servers(servidors, min_replic, seeds);
 
@@ -53,7 +53,7 @@ public class ServersDemo {
     private static void ServersHillClimbingSearch(ServersBoard Serv) {
         System.out.println("\n nTSP HillClimbing -->");
         try {
-            Problem problem =  new Problem(Serv, new ServersSuccessorFunctionHC(), new ServersGoalTest(), new ServersHeuristicFunction());
+            Problem problem =  new Problem(Serv, new ServersSuccessorFunctionHC(), new ServersGoalTest(), new ServersHeuristicFunction2());
             Search search =  new HillClimbingSearch();
             SearchAgent agent = new SearchAgent(problem,search);
 
