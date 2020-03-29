@@ -26,10 +26,10 @@ public class ServersSuccessorFunctionHC implements SuccessorFunction {
                 if (sa != s) {      //comprovo que no siguin el mateix servidor
                     ServersBoard emodificat = new ServersBoard(board.getBoard(), board.getBoardtemps(), board.getTempstotal());
                     emodificat.moure_servidor(i,s, t);       //a la posició i vull posar el nou servidor s
-                    //double h = Heur.getHeuristicValue(emodificat);
+                    double h = Heur.getHeuristicValue(emodificat);
                     //double h2 = Heur2.getHeuristicValue(emodificat);
-                    double h3 = Heur3.getHeuristicValue(emodificat);
-                    String S = ServersBoard.MOURE + " el servidor " + s + " a la petició " + i + " Heuristica: " + h3 + ", temps: " + board.getTempstotal();
+                    //double h3 = Heur3.getHeuristicValue(emodificat);
+                    String S = ServersBoard.MOURE + " el servidor " + s + " a la petició " + i + " Heuristica: " + h + ", temps: " + board.getTempstotal();
                     successors.add(new Successor(S,emodificat));
                 }
             }

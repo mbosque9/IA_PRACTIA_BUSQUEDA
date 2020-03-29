@@ -21,7 +21,7 @@ public class ServersDemo {
             max_peticions = 5;
             servidors = 50;
             min_replic = 5;
-            seedr = seeds = 1;
+            seedr = seeds = 31;
             Requests requests = new Requests(usuaris, max_peticions, seedr);
             Servers servers = new Servers(servidors, min_replic, seeds);
 
