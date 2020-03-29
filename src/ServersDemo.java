@@ -13,19 +13,26 @@ import java.util.Properties;
 
 public class ServersDemo {
     public static void main(String[] args) throws Servers.WrongParametersException {
-        int usuaris, max_peticions, seedr, servidors, min_replic, seeds;
-        usuaris = 20;
-        max_peticions = 5;
-        servidors = 20;
-        min_replic = 5;
-        seedr = seeds = 42;
-        Requests requests =  new Requests(usuaris, max_peticions, seedr);
-        Servers servers = new Servers(servidors, min_replic, seeds);
 
-        // write your code here
-        ServersBoard Serv =new ServersBoard(requests, servers, servidors);
-        ServersHillClimbingSearch(Serv);
-        ServersSimulatedAnnealingSearch(Serv);
+        for(int i = 1; i< 12; ++i) {
+            long inicio = System.currentTimeMillis();
+            int usuaris, max_peticions, seedr, servidors, min_replic, seeds;
+            usuaris = 200;
+            max_peticions = 5;
+            servidors = 1000;
+            min_replic = 5;
+            seedr = seeds = i;
+            Requests requests = new Requests(usuaris, max_peticions, seedr);
+            Servers servers = new Servers(servidors, min_replic, seeds);
+
+            // write your code here
+            ServersBoard Serv = new ServersBoard(requests, servers, servidors);
+            ServersHillClimbingSearch(Serv);
+            //ServersSimulatedAnnealingSearch(Serv);
+            long fin = System.currentTimeMillis();
+            double tiempo = (double) ((fin - inicio));
+            System.out.println(tiempo + " mili segundos");
+        }
     }
 
     private static void ServersSimulatedAnnealingSearch(ServersBoard Serv) {
@@ -46,7 +53,7 @@ public class ServersDemo {
     private static void ServersHillClimbingSearch(ServersBoard Serv) {
         System.out.println("\n nTSP HillClimbing -->");
         try {
-            Problem problem =  new Problem(Serv, new ServersSuccessorFunctionHC(), new ServersGoalTest(), new ServersHeuristicFunction());
+            Problem problem =  new Problem(Serv, new ServersSuccessorFunctionHC(), new ServersGoalTest(), new ServersHeuristicFunction3());
             Search search =  new HillClimbingSearch();
             SearchAgent agent = new SearchAgent(problem,search);
 
