@@ -187,4 +187,17 @@ public class ServersBoard {
         return num_servidors;
     }
 
+    public boolean comprova(int i, Integer s) {
+       Set<Integer> x = servers.fileLocations(getFitxer(i));
+       Iterator y = x.iterator();
+       while (y.hasNext()) {
+           if(y.next() == s) return true;
+       }
+       return false;
+    }
+
+    public void intercanviar(Integer sa, int j, Integer s, int i) {
+       Board.set(j, sa);
+        Board.set(i, s);
+    }
 }

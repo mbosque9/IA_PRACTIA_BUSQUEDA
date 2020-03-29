@@ -1,7 +1,6 @@
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -16,7 +15,7 @@ public class ServersSuccessorFunctionSA implements SuccessorFunction {
         return new Random().nextInt(limit);
     }
 
-    public List getSuccessors(Object eactual) {
+    /*public List getSuccessors(Object eactual) {
         ArrayList<Successor> successors = new ArrayList<>();
         ServersBoard board = (ServersBoard) eactual;
         ServersHeuristicFunction Heur = new ServersHeuristicFunction();
@@ -45,11 +44,37 @@ public class ServersSuccessorFunctionSA implements SuccessorFunction {
                 ServersBoard emodificat = new ServersBoard(board.getBoard(), board.getBoardtemps());
                 emodificat.moure_servidor(a1, s);
                 for(int i= 0; i < emodificat.getSize();++i){
-                   System.out.println("pet: " + i +" serv: "+  emodificat.getServidor(i));
+                    System.out.println("pet: " + i +" serv: "+  emodificat.getServidor(i));
                 }
 
                 double h = Heur.getHeuristicValue(emodificat);
                 String S = ServersBoard.MOURE + " el servidor " + s + " a la petició" + a1 + " Coste(" + h + ")" ;
+                successors.add(new Successor(S, emodificat));
+                generat = true;
+            }
+        }
+        return successors;
+    }*/
+
+    public List getSuccessors(Object eactual) {
+        ArrayList<Successor> successors = new ArrayList<>();
+        ServersBoard board = (ServersBoard) eactual;
+        ServersHeuristicFunction Heur = new ServersHeuristicFunction();
+        Random myRandom = new Random();
+
+        boolean generat = false;
+        Integer sa, s, a1, a2;
+        int npeticions = board.getSize();
+        while(!generat) {
+            a1 = myRandom.nextInt(npeticions);
+            a2 = myRandom.nextInt(npeticions);
+            s = board.getServidor(a1);
+            sa = board.getServidor(a2);
+            if (a1 != a2 && board.comprova(a1, sa) && board.comprova(a2,s)) {
+                ServersBoard emodificat = new ServersBoard(board.getBoard(), board.getBoardtemps());
+                emodificat.intercanviar(s, a2, sa, a1);
+                double h = Heur.getHeuristicValue(emodificat);
+                String S = ServersBoard.MOURE + " el servidor " + s + " a la petició " + a2 + " i " + ServersBoard.MOURE + " el servidor " + sa + " a la petició " + a1 + " Coste (" + h + ")";
                 successors.add(new Successor(S, emodificat));
                 generat = true;
             }
