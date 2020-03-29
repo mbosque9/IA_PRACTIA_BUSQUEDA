@@ -19,19 +19,17 @@ public class ServersBoard {
         requests = req;
         servers = serv;
         num_servidors = servidors;
-        int[] prov;
         Set<Integer> prov2;
         Integer tempo, tempo2, max, min_ser;
         Iterator itr;
         for(int i = 0; i < requests.size(); ++i) {
             max = 500000000;
             min_ser = -1;
-            prov = requests.getRequest(i);
-            prov2 = servers.fileLocations(prov[1]);
+            prov2 = servers.fileLocations(getFitxer(i));
             itr = prov2.iterator();
             while (itr.hasNext()){
                 tempo = (Integer) itr.next();
-                tempo2 =  servers.tranmissionTime(tempo, prov[0]);
+                tempo2 =  servers.tranmissionTime(tempo, getUsuari(i));
                 if (tempo2 < max) {
                     max = tempo2;
                     min_ser = tempo;
@@ -48,16 +46,14 @@ public class ServersBoard {
     }
 
     //EL PRIMER
-    public ServersBoard(Requests req, Servers serv, int servidors) {
+    /*public ServersBoard(Requests req, Servers serv, int servidors) {
         requests = req;
         servers = serv;
         num_servidors = servidors;
-        int[] prov;
         Set<Integer> prov2;
         Iterator itr;
         for(int i = 0; i < requests.size(); ++i) {
-            prov = requests.getRequest(i);
-            prov2 = servers.fileLocations(prov[1]);
+            prov2 = servers.fileLocations(getFitxer(i));
             itr = prov2.iterator();
             if (itr.hasNext()){
                 Integer p = (Integer) itr.next();
@@ -65,34 +61,54 @@ public class ServersBoard {
                 Boardtemps.add(servers.tranmissionTime(p, getUsuari(i)));
             }
         }
-    }
+    }*/
 
-    //ALEATORI
-   /*public ServersBoard(Requests req, Servers serv, int servidors) {
+    //EL SEGON MES RAPID (no acabat)
+    /*public ServersBoard(Requests req, Servers serv, int servidors) {
         requests = req;
         servers = serv;
         num_servidors = servidors;
-        Random myRandom = new Random();
-        int[] prov;
         Set<Integer> prov2;
+        Integer tempo, tempo2, max, max2, min_ser, min_ser2;
         Iterator itr;
         for(int i = 0; i < requests.size(); ++i) {
-            prov = requests.getRequest(i);
-            prov2 = servers.fileLocations(prov[1]);
+            max = 500000000;
+            min_ser = -1;
+            max2 = 500000000;
+            min_ser2 = -1;
+            prov2 = servers.fileLocations(getFitxer(i));
             itr = prov2.iterator();
-            int num_aleatori = myRandom.nextInt(prov2.size());
-            int j = 0;
-            while (itr.hasNext()) {
-                if(j < num_aleatori) itr.hasNext();
-                else {
-                    Integer p = (Integer) itr.next();
-                    Board.add(p);
-                    Boardtemps.add(servers.tranmissionTime(p, getUsuari(i)));
+            while (itr.hasNext()){
+                tempo = (Integer) itr.next();
+                tempo2 =  servers.tranmissionTime(tempo, getUsuari(i));
+                if (tempo2 < max) {
+                    max = tempo2;
+                    min_ser = tempo;
                 }
-                ++j;
+                else if(tempo2 < max2){
+                    max2 = tempo2;
+                    min_ser2 =  tempo;
+                }
             }
+            Board.add(min_ser);
+            Boardtemps.add(max);
         }
     }*/
+
+    //ALEATORI
+   public ServersBoard(Requests req, Servers serv, int servidors) {
+        requests = req;
+        servers = serv;
+        num_servidors = servidors;
+        Integer p;
+       Random myRandom = new Random();
+        for (int i = 0; i < requests.size(); ++i) {
+            ArrayList<Integer> x = conjunt_servidors(i);
+            p = myRandom.nextInt(x.size());
+            Board.add(x.get(p));
+            Boardtemps.add(servers.tranmissionTime(x.get(p), getUsuari(i)));
+        }
+    }
 
     public ArrayList<Integer> conjunt_servidors(Integer p){   //fet
         ArrayList<Integer> posibles_servidors = new  ArrayList<Integer>();

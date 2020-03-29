@@ -28,22 +28,31 @@ public class ServersSuccessorFunctionSA implements SuccessorFunction {
         ArrayList<Integer> ssp;
 
         while(!generat) {
+
             a1 = myRandom.nextInt(npeticions); //num peticio random
+            System.out.println("random a1: " + a1);
+
             sa = board.getServidor(a1); //servidor associat a la peticio
+            System.out.println("SERVIDOR s1: " + sa);
             ssp = board.conjunt_servidors(a1);      //nomes em poden tocar servidors que tinguin el fitxer
 
             a2 = myRandom.nextInt(ssp.size());
+            System.out.println("random a2: " + a2);
             s = ssp.get(a2);
+            System.out.println("SERVIDOR S2: " + s);
 
             if (sa != s) {  //comprovo que no sigui el mateix servidor
                 ServersBoard emodificat = new ServersBoard(board.getBoard(), board.getBoardtemps());
                 emodificat.moure_servidor(a1, s);
+                for(int i= 0; i < emodificat.getSize();++i){
+                   System.out.println("pet: " + i +" serv: "+  emodificat.getServidor(i));
+                }
+
                 double h = Heur.getHeuristicValue(emodificat);
                 String S = ServersBoard.MOURE + " el servidor " + s + " a la petició" + a1 + " Coste(" + h + ")" ;
                 successors.add(new Successor(S, emodificat));
                 generat = true;
             }
-
         }
         return successors;
     }
