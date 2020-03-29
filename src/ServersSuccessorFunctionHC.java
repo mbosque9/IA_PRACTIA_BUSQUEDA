@@ -39,7 +39,7 @@ public class ServersSuccessorFunctionHC implements SuccessorFunction {
         ArrayList<Successor> successors = new ArrayList<>();
         ServersBoard board = (ServersBoard) eactual;
         ServersHeuristicFunction Heur = new ServersHeuristicFunction();
-        ServersHeuristicFunction Heur2 = new ServersHeuristicFunction();
+        ServersHeuristicFunction2 Heur2 = new ServersHeuristicFunction2();
         double hh = Heur2.getHeuristicValue(board);
         System.out.println("rasta" + hh);
         Integer sa, s;
