@@ -70,7 +70,7 @@ public class ServersSuccessorFunctionSA implements SuccessorFunction {
             a2 = myRandom.nextInt(npeticions);
             s = board.getServidor(a1);
             sa = board.getServidor(a2);
-            if (a1 != a2 && board.comprova(a1, sa) && board.comprova(a2,s)) {
+            if (a1 != a2 && s!= sa && board.comprova(a1, sa) && board.comprova(a2,s)) {
                 ServersBoard emodificat = new ServersBoard(board.getBoard(), board.getBoardtemps());
                 emodificat.intercanviar(s, a2, sa, a1);
                 double h = Heur.getHeuristicValue(emodificat);
