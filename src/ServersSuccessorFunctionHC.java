@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ServersSuccessorFunctionHC implements SuccessorFunction {
 
-    public List<Successor> getSuccessors(Object eactual) {
+    /*public List<Successor> getSuccessors(Object eactual) {
         ArrayList<Successor> successors = new ArrayList<>();
         ServersBoard board = (ServersBoard) eactual;
         ServersHeuristicFunction Heur = new ServersHeuristicFunction();
@@ -33,6 +33,32 @@ public class ServersSuccessorFunctionHC implements SuccessorFunction {
             }
         }
         return (successors);
-    }
+    }*/
 
+    public List<Successor> getSuccessors(Object eactual) {
+        ArrayList<Successor> successors = new ArrayList<>();
+        ServersBoard board = (ServersBoard) eactual;
+        ServersHeuristicFunction Heur = new ServersHeuristicFunction();
+        ServersHeuristicFunction2 Heur2 = new ServersHeuristicFunction2();
+        double hh = Heur2.getHeuristicValue(board);
+        System.out.println("rasta" + hh);
+        Integer sa, s;
+        int npeticions = board.getSize();
+        for (int i = 0; i < npeticions; i++) {
+            sa = board.getServidor(i);
+            for (int j = 0; j < npeticions; j++) {      //recorro cada servidor que te el fitxer
+                s = board.getServidor(j);
+                if (sa != s && board.comprova(i, s) && board.comprova(j, sa)) {      //comprovo que no siguin el mateix servidor
+                    System.out.println("entreee");
+                    ServersBoard emodificat = new ServersBoard(board.getBoard(), board.getBoardtemps());
+                    emodificat.intercanviar(sa, j, s, i);       //a la posició i vull posar el nou servidor s
+                    double h = Heur.getHeuristicValue(emodificat);
+                    System.out.println("putiya " + hh);
+                    String S = ServersBoard.MOURE + " el servidor " + sa + " a la petició " + j + " i " + ServersBoard.MOURE + " el servidor " + s + " a la petició " + i + " Coste (" + h + ")";
+                    successors.add(new Successor(S,emodificat));
+                }
+            }
+        }
+        return (successors);
+    }
 }

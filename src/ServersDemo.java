@@ -58,7 +58,7 @@ public class ServersDemo {
             SearchAgent agent = new SearchAgent(problem,search);
 
             System.out.println();
-           // printActions(agent.getActions());
+            printActions(agent.getActions());
             printInstrumentation(agent.getInstrumentation());
         } catch (Exception e) {
             e.printStackTrace();
