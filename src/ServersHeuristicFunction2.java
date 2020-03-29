@@ -8,6 +8,7 @@ public class ServersHeuristicFunction2 implements HeuristicFunction  {
     double suma_temps;
     double mitjana;
     double num_fitxer;
+    double num_servidors;
     double servidorsTotals;
     double variancia;
     double h;
